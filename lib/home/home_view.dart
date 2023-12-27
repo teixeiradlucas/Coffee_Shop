@@ -1,3 +1,4 @@
+import 'package:app_pc_store/constants/routers/app_routes_name.dart';
 import 'package:app_pc_store/constants/strings/strings_generic.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,10 @@ class HomeView extends StatelessWidget {
           ),
           Row(
             children: [
-              TextButton(onPressed: () {}, child: const Text('Processador')),
+              TextButton(
+                onPressed: () => AppRoutesName.chipset.pushNamedVoid(context),
+                child: const Text('Processador'),
+              ),
               TextButton(onPressed: () {}, child: const Text('Placa mãe')),
               TextButton(onPressed: () {}, child: const Text('Placa de vídeo')),
               TextButton(onPressed: () {}, child: const Text('Memória ram')),
