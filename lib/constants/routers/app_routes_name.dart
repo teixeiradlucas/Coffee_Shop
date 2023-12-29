@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 enum AppRoutesName {
   home,
-  chipset,
+  favorites,
 }
 
 extension AppRoutesExt on AppRoutesName {
@@ -42,8 +42,8 @@ extension AppRoutesExt on AppRoutesName {
     switch (this) {
       case AppRoutesName.home:
         return 'Inicial';
-      case AppRoutesName.chipset:
-        return 'Processador';
+      case AppRoutesName.favorites:
+        return 'Favoritos';
     }
   }
 }

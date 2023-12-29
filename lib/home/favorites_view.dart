@@ -1,8 +1,8 @@
-import 'package:app_pc_store/constants/strings/strings_generic.dart';
+import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
 import 'package:flutter/material.dart';
 
-class ChipsetView extends StatelessWidget {
-  const ChipsetView({super.key});
+class FavoritesView extends StatelessWidget {
+  const FavoritesView({super.key});
 
   @override
   Widget build(BuildContext context) {

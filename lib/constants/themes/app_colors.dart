@@ -6,4 +6,6 @@ class AppColors {
   static const Color whiteColor = Color.fromARGB(255, 255, 255, 255);
 
   static const Color blackColor = Color.fromARGB(255, 0, 0, 0);
+
+  static const Color brownCoffeeColor = Color.fromARGB(255, 71, 2, 2);
 }

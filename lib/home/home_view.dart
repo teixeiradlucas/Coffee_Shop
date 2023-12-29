@@ -1,5 +1,6 @@
-import 'package:app_pc_store/constants/routers/app_routes_name.dart';
-import 'package:app_pc_store/constants/strings/strings_generic.dart';
+import 'package:app_coffee_shop/constants/routers/app_routes_name.dart';
+import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
+import 'package:app_coffee_shop/constants/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class HomeView extends StatelessWidget {
@@ -7,6 +8,7 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Center(
@@ -23,24 +25,51 @@ class HomeView extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView(
+      body: Column(
         children: [
-          ElevatedButton(
-            onPressed: () {},
-            child: const Text('Monte seu pc'),
+          Container(
+            decoration: BoxDecoration(
+              color: AppColors.brownCoffeeColor,
+              borderRadius:
+                  BorderRadius.circular(10.0), // Define o raio das bordas
+            ),
+            height: 150,
+            width: screenWidth - 10,
+            child: const Row(
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      'Espresso irresistível, momentos inesquecíveis.',
+                      style: TextStyle(
+                        fontSize: 24,
+                        fontWeight: FontWeight.w700,
+                        height: 1.5,
+                        color: AppColors.whiteColor,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-          Row(
-            children: [
-              TextButton(
-                onPressed: () => AppRoutesName.chipset.pushNamedVoid(context),
-                child: const Text('Processador'),
-              ),
-              TextButton(onPressed: () {}, child: const Text('Placa mãe')),
-              TextButton(onPressed: () {}, child: const Text('Placa de vídeo')),
-              TextButton(onPressed: () {}, child: const Text('Memória ram')),
-              TextButton(onPressed: () {}, child: const Text('Gabinete')),
-              TextButton(onPressed: () {}, child: const Text('Processador')),
-            ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              children: [
+                TextButton(
+                  onPressed: () =>
+                      AppRoutesName.favorites.pushNamedVoid(context),
+                  child: const Text('Processador'),
+                ),
+                TextButton(onPressed: () {}, child: const Text('Placa mãe')),
+                TextButton(
+                    onPressed: () {}, child: const Text('Placa de vídeo')),
+                TextButton(onPressed: () {}, child: const Text('Memória ram')),
+                TextButton(onPressed: () {}, child: const Text('Gabinete')),
+                TextButton(onPressed: () {}, child: const Text('Processador')),
+              ],
+            ),
           ),
         ],
       ),

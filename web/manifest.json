@@ -1,6 +1,6 @@
 {
-    "name": "app_pc_store",
-    "short_name": "app_pc_store",
+    "name": "app_coffee_shop",
+    "short_name": "app_coffee_shop",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

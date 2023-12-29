@@ -1,4 +1,4 @@
-# app_pc_store
+# app_coffee_shop
 
 A new Flutter project.
 

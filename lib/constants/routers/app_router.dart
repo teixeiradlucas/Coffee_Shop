@@ -1,6 +1,6 @@
-import 'package:app_pc_store/constants/routers/app_routes_name.dart';
-import 'package:app_pc_store/home/chipset_view.dart';
-import 'package:app_pc_store/home/home_view.dart';
+import 'package:app_coffee_shop/constants/routers/app_routes_name.dart';
+import 'package:app_coffee_shop/home/favorites_view.dart';
+import 'package:app_coffee_shop/home/home_view.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 
@@ -23,12 +23,12 @@ mixin AppRouter {
           settings: RouteSettings(name: route.routeName),
           builder: (_) => const HomeView(),
         );
-      case AppRoutesName.chipset:
+      case AppRoutesName.favorites:
         return MaterialPageRoute(
           fullscreenDialog: true,
           maintainState: false,
           settings: RouteSettings(name: route.routeName),
-          builder: (_) => const ChipsetView(),
+          builder: (_) => const FavoritesView(),
         );
     }
   }
