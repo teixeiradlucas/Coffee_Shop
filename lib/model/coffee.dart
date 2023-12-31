@@ -22,7 +22,7 @@ List<Coffee> coffees = [
     name: 'Espresso 2',
     intensity: 4,
     beverageType: 'Espresso',
-    price: 4.00,
+    price: 4,
   ),
   Coffee(
     name: 'Espresso 3',
@@ -52,7 +52,7 @@ List<Coffee> coffees = [
     name: 'Cappuccino 2',
     intensity: 4,
     beverageType: 'Cappuccino',
-    price: 6.00,
+    price: 6,
   ),
   Coffee(
     name: 'Cappuccino 3',
@@ -76,7 +76,7 @@ List<Coffee> coffees = [
     name: 'Latte 1',
     intensity: 3,
     beverageType: 'Latte',
-    price: 6.00,
+    price: 6,
   ),
   Coffee(
     name: 'Latte 2',
@@ -124,7 +124,7 @@ List<Coffee> coffees = [
     name: 'Macchiato 4',
     intensity: 3,
     beverageType: 'Macchiato',
-    price: 5.00,
+    price: 5,
   ),
   Coffee(
     name: 'Macchiato 5',
