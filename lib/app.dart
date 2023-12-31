@@ -1,5 +1,4 @@
-import 'package:app_coffee_shop/constants/routers/app_router.dart';
-import 'package:app_coffee_shop/constants/routers/app_routes_name.dart';
+import 'package:app_coffee_shop/constants/routers/routes.dart';
 import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
 import 'package:app_coffee_shop/constants/themes/app_theme.dart';
 import 'package:flutter/material.dart';
@@ -9,12 +8,13 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: AppStringsGeneric.appName,
       debugShowCheckedModeBanner: false,
-      onGenerateRoute: AppRouter.generateRoute,
-      initialRoute: AppRoutesName.home.routeName,
       theme: AppTheme.darkTheme,
+      routerDelegate: routes.routerDelegate,
+      routeInformationParser: routes.routeInformationParser,
+      routeInformationProvider: routes.routeInformationProvider,
     );
   }
 }
