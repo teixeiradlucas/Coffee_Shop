@@ -76,14 +76,16 @@ class HomeView extends StatelessWidget {
 }
 
 SizedBox _bestSellers(List<Coffee> items) {
+  final activeCoffees =
+      items.where((coffee) => coffee.isAtive && coffee.bestSellers).toList();
   return SizedBox(
     height: 200,
     child: ListView.builder(
       physics: const BouncingScrollPhysics(),
       scrollDirection: Axis.horizontal,
-      itemCount: items.length,
+      itemCount: activeCoffees.length,
       itemBuilder: (context, index) {
-        final coffe = items[index];
+        final coffe = activeCoffees[index];
         return CoffeeItem(
           title: coffe.name,
           type: coffe.beverageType,
