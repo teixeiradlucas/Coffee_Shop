@@ -1,4 +1,5 @@
 class AppStringsGeneric {
   static const appName = 'Cafeteria Prime';
-  static const nameChipset = 'Processador';
+  static const favorites = 'Favoritos';
+  static const bestSellers = 'Mais vendidos';
 }
