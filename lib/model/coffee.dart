@@ -1,5 +1,6 @@
 class Coffee {
   Coffee({
+    required this.id,
     required this.name,
     required this.intensity,
     required this.beverageType,
@@ -8,6 +9,7 @@ class Coffee {
     required this.bestSellers,
     required this.imageAssets,
   });
+  final int id;
   final String name;
   final int intensity;
   final String beverageType;
@@ -19,6 +21,7 @@ class Coffee {
 
 List<Coffee> coffees = [
   Coffee(
+    id: 1,
     name: 'Espresso Intenso',
     intensity: 9,
     beverageType: 'Espresso',
@@ -28,6 +31,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/espresso1.jpg',
   ),
   Coffee(
+    id: 2,
     name: 'Espresso Gelado',
     intensity: 7,
     beverageType: 'Espresso',
@@ -37,6 +41,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/espresso2.jpg',
   ),
   Coffee(
+    id: 3,
     name: 'Espresso',
     intensity: 7,
     beverageType: 'Espresso',
@@ -46,6 +51,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/espresso3.jpg',
   ),
   Coffee(
+    id: 4,
     name: 'Espresso Barista',
     intensity: 6,
     beverageType: 'Espresso',
@@ -55,6 +61,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/espresso4.jpg',
   ),
   Coffee(
+    id: 5,
     name: 'Cappuccino',
     intensity: 3,
     beverageType: 'Cappuccino',
@@ -64,6 +71,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/cappuccino1.jpg',
   ),
   Coffee(
+    id: 6,
     name: 'Cappuccino Doce de Leite',
     intensity: 4,
     beverageType: 'Cappuccino',
@@ -73,6 +81,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/cappuccino2.jpg',
   ),
   Coffee(
+    id: 7,
     name: 'Cappuccino Gelado',
     intensity: 3,
     beverageType: 'Cappuccino',
@@ -82,6 +91,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/cappuccino3.jpg',
   ),
   Coffee(
+    id: 8,
     name: 'Cappuccino Zero Lactose',
     intensity: 4,
     beverageType: 'Cappuccino',
@@ -91,6 +101,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/cappuccino4.jpg',
   ),
   Coffee(
+    id: 9,
     name: 'Cappuccino Vanilla',
     intensity: 3,
     beverageType: 'Cappuccino',
@@ -100,6 +111,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/cappuccino5.jpg',
   ),
   Coffee(
+    id: 10,
     name: 'Latte Avelã',
     intensity: 3,
     beverageType: 'Latte',
@@ -109,6 +121,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/latte1.jpg',
   ),
   Coffee(
+    id: 11,
     name: 'Latte Macchiato',
     intensity: 3,
     beverageType: 'Latte',
@@ -118,6 +131,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/latte2.jpg',
   ),
   Coffee(
+    id: 12,
     name: 'Frappe Gelado',
     intensity: 2,
     beverageType: 'Latte',
@@ -127,6 +141,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/latte3.jpg',
   ),
   Coffee(
+    id: 13,
     name: 'Frappe',
     intensity: 3,
     beverageType: 'Latte',
@@ -136,6 +151,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/latte4.jpg',
   ),
   Coffee(
+    id: 14,
     name: 'Mocha',
     intensity: 4,
     beverageType: 'Mocha',
@@ -145,6 +161,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/mocha1.jpg',
   ),
   Coffee(
+    id: 15,
     name: 'Chococino',
     intensity: 3,
     beverageType: 'Mocha',
@@ -154,6 +171,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/mocha2.jpg',
   ),
   Coffee(
+    id: 16,
     name: 'Chococino Caramel',
     intensity: 4,
     beverageType: 'Mocha',
@@ -163,6 +181,7 @@ List<Coffee> coffees = [
     imageAssets: 'assets/images/mocha3.jpg',
   ),
   Coffee(
+    id: 17,
     name: 'Mocha Gelado',
     intensity: 3,
     beverageType: 'Mocha',
