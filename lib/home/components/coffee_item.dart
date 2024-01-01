@@ -7,12 +7,14 @@ class CoffeeItem extends StatelessWidget {
     required this.title,
     required this.type,
     required this.price,
+    required this.imageAssets,
     super.key,
   });
 
   final String title;
   final String type;
   final String price;
+  final String imageAssets;
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +31,15 @@ class CoffeeItem extends StatelessWidget {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
-                child: Image.network(
-                  'https://p2.trrsf.com/image/fget/cf/1200/900/middle/images.terra.com/2023/04/13/2081474064-beneficios-do-cafe.jpg',
+                child: SizedBox(
+                  height: 100,
+                  width: 130,
+                  child: FittedBox(
+                    fit: BoxFit.fitWidth,
+                    child: Image.asset(
+                      imageAssets,
+                    ),
+                  ),
                 ),
               ),
               gapM,
