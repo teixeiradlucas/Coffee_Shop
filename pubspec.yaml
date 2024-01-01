@@ -29,4 +29,12 @@ flutter:
       fonts:
         - asset: assets/fonts/poppins.ttf
 
+    - family: Sallim
+      fonts:
+        - asset: assets/fonts/SallimSignature.ttf
+
+    - family: Inter
+      fonts:
+        - asset: assets/fonts/Inter.ttf
+
 

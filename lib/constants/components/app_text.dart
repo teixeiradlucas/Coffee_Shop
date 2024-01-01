@@ -29,8 +29,8 @@ class AppText extends StatelessWidget {
       const TextStyle(
         fontFamily: AppFonts.poppins,
         fontSize: 20,
-        fontWeight: FontWeight.w700,
-        height: 1.5,
+        fontWeight: FontWeight.w500,
+        height: 1.2,
         color: AppColors.whiteColor,
       ),
       maxLines: 3,
@@ -45,7 +45,7 @@ class AppText extends StatelessWidget {
     return AppText._(
       text,
       const TextStyle(
-        fontFamily: AppFonts.poppins,
+        fontFamily: AppFonts.inter,
         fontSize: 12,
         fontWeight: FontWeight.w700,
         height: 1,
