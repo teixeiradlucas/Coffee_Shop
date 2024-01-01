@@ -47,16 +47,30 @@ class HomeView extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 20,
+            top: 35,
             left: 20,
-            child: SizedBox(
-              height: 120,
-              width: screenWidth * 0.65,
-              child: Column(
-                children: [
-                  AppText.h2('Espresso irresistível, momentos inesquecíveis.'),
-                ],
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 120,
+                  width: screenWidth * 0.65,
+                  child: AppText.h2(
+                    'Espresso irresistível, momentos inesquecíveis.',
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Positioned(
+            top: 100,
+            left: 20,
+            child: Container(
+              width: 150,
+              decoration: BoxDecoration(
+                color: AppColors.whiteColor,
+                borderRadius: BorderRadius.circular(AppDimens.kPaddingM),
               ),
+              child: Center(child: AppText.h1('ATÉ 20% OFF')),
             ),
           ),
           Positioned(
@@ -89,14 +103,7 @@ SizedBox _bestSellers(List<Coffee> items) {
       itemCount: activeCoffees.length,
       itemBuilder: (context, index) {
         final coffee = activeCoffees[index];
-        final realPrice = formattedPrice(computarDesconto(coffee));
-        return CoffeeItem(
-          title: coffee.name,
-          type: coffee.beverageType,
-          price: realPrice,
-          imageAssets: coffee.imageAssets,
-          bestSellers: coffee.bestSellers,
-        );
+        return CoffeeItem(itemCoffee: coffee);
       },
     ),
   );
@@ -117,25 +124,4 @@ SingleChildScrollView _category(BuildContext context) {
       ],
     ),
   );
-}
-
-String formattedPrice(double valor) {
-  var valorString = valor.toStringAsFixed(2);
-  valorString = valorString.replaceAll('.', ',');
-  valorString = 'R\$ $valorString';
-
-  return valorString;
-}
-
-double computarDesconto(Coffee coffee) {
-  var percentualDesconto = 0.0;
-  if (coffee.beverageType == 'Espresso') {
-    percentualDesconto = 0.20;
-  } else if (coffee.beverageType == 'Cappuccino') {
-    percentualDesconto = 0.12;
-  }
-
-  final precoComDesconto = coffee.price - (coffee.price * percentualDesconto);
-
-  return precoComDesconto;
 }
