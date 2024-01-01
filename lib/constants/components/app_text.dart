@@ -51,7 +51,6 @@ class AppText extends StatelessWidget {
         height: 1,
         color: AppColors.blackColor,
       ),
-      maxLines: 3,
       textAlign: textAlign,
     );
   }
@@ -69,7 +68,23 @@ class AppText extends StatelessWidget {
         height: 1,
         color: Color.fromARGB(255, 80, 80, 80),
       ),
-      maxLines: 3,
+      textAlign: textAlign,
+    );
+  }
+
+  factory AppText.sale(
+    String text, {
+    TextAlign textAlign = TextAlign.start,
+  }) {
+    return AppText._(
+      text,
+      const TextStyle(
+        fontFamily: AppFonts.poppins,
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        height: 1,
+        color: AppColors.greenColor,
+      ),
       textAlign: textAlign,
     );
   }
