@@ -9,6 +9,7 @@ class CoffeeItem extends StatelessWidget {
     required this.type,
     required this.price,
     required this.imageAssets,
+    required this.bestSellers,
     super.key,
   });
 
@@ -16,40 +17,57 @@ class CoffeeItem extends StatelessWidget {
   final String type;
   final String price;
   final String imageAssets;
+  final bool bestSellers;
 
   @override
   Widget build(BuildContext context) {
+    var discountMessage = '';
+    if (type == 'Espresso') {
+      discountMessage = '20% OFF';
+    } else if (type == 'Cappuccino') {
+      discountMessage = '12% OFF';
+    }
     return Padding(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(AppDimens.kPaddingM),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
         child: Container(
           height: 200,
           width: 130,
           color: AppColors.whiteColor,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              ClipRRect(
-                borderRadius: BorderRadius.circular(10),
-                child: SizedBox(
-                  height: 115,
-                  width: 130,
-                  child: FittedBox(
-                    fit: BoxFit.fitWidth,
-                    child: Image.asset(
-                      imageAssets,
+          child: Padding(
+            padding: const EdgeInsets.all(AppDimens.kPadding),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ClipRRect(
+                  borderRadius:
+                      BorderRadius.circular(AppDimens.kDefaultPadding),
+                  child: SizedBox(
+                    height: 115,
+                    width: 130,
+                    child: FittedBox(
+                      fit: BoxFit.fitWidth,
+                      child: Image.asset(
+                        imageAssets,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              gapM,
-              AppText.body(title),
-              gapS,
-              AppText.descrition(type),
-              gapM,
-              AppText.body(price),
-            ],
+                gapM,
+                AppText.body(title),
+                gapS,
+                AppText.descrition(type),
+                gapM,
+                Row(
+                  children: [
+                    AppText.body(price),
+                    gapM,
+                    AppText.sale(discountMessage),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

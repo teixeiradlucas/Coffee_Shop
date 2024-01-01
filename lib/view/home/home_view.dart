@@ -31,19 +31,7 @@ class HomeView extends StatelessWidget {
 
   AppBar _appBar() {
     return AppBar(
-      title: Center(
-        child: AppText.h1(AppStringsGeneric.appName),
-      ),
-      leading: IconButton(
-        onPressed: () {},
-        icon: const Icon(Icons.menu),
-      ),
-      actions: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(Icons.shop_2_rounded),
-        ),
-      ],
+      title: Center(child: AppText.h1(AppStringsGeneric.appName)),
     );
   }
 
@@ -52,21 +40,36 @@ class HomeView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.brownCoffeeColor,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
       ),
-      height: 150,
+      height: 180,
       width: screenWidth - 20,
-      child: Row(
+      child: Stack(
         children: [
-          Column(
-            children: [
-              AppText.h2('Espresso irresistível, \nmomentos inesquecíveis.'),
-            ],
+          Positioned(
+            top: 20,
+            left: 20,
+            child: SizedBox(
+              height: 120,
+              width: screenWidth * 0.65,
+              child: Column(
+                children: [
+                  AppText.h2('Espresso irresistível, momentos inesquecíveis.'),
+                ],
+              ),
+            ),
           ),
-          SizedBox(
-            height: 120,
-            width: 120,
-            child: Image.asset('assets/images/coffeenew.png'),
+          Positioned(
+            right: 10,
+            bottom: 0,
+            child: SizedBox(
+              height: 120,
+              width: screenWidth * 0.3,
+              child: FittedBox(
+                fit: BoxFit.fitHeight,
+                child: Image.asset('assets/images/coffeenew.png'),
+              ),
+            ),
           ),
         ],
       ),
@@ -85,13 +88,14 @@ SizedBox _bestSellers(List<Coffee> items) {
       scrollDirection: Axis.horizontal,
       itemCount: activeCoffees.length,
       itemBuilder: (context, index) {
-        final coffe = activeCoffees[index];
-        final realPrice = formattedPrice(coffe.price);
+        final coffee = activeCoffees[index];
+        final realPrice = formattedPrice(computarDesconto(coffee));
         return CoffeeItem(
-          title: coffe.name,
-          type: coffe.beverageType,
+          title: coffee.name,
+          type: coffee.beverageType,
           price: realPrice,
-          imageAssets: coffe.imageAssets,
+          imageAssets: coffee.imageAssets,
+          bestSellers: coffee.bestSellers,
         );
       },
     ),
@@ -121,4 +125,17 @@ String formattedPrice(double valor) {
   valorString = 'R\$ $valorString';
 
   return valorString;
+}
+
+double computarDesconto(Coffee coffee) {
+  var percentualDesconto = 0.0;
+  if (coffee.beverageType == 'Espresso') {
+    percentualDesconto = 0.20;
+  } else if (coffee.beverageType == 'Cappuccino') {
+    percentualDesconto = 0.12;
+  }
+
+  final precoComDesconto = coffee.price - (coffee.price * percentualDesconto);
+
+  return precoComDesconto;
 }
