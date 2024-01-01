@@ -1,8 +1,8 @@
 import 'package:app_coffee_shop/constants/components/app_dimension.dart';
 import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
 import 'package:app_coffee_shop/constants/themes/app_colors.dart';
-import 'package:app_coffee_shop/home/components/coffee_item.dart';
 import 'package:app_coffee_shop/model/coffee.dart';
+import 'package:app_coffee_shop/view/home/components/coffee_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
