@@ -1,3 +1,4 @@
+import 'package:app_coffee_shop/constants/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 enum AppThemes { lightTheme, darkTheme }
@@ -19,8 +20,8 @@ class AppTheme {
   static ThemeData get lightTheme => ThemeData(
         useMaterial3: false,
         brightness: Brightness.light,
-        //primaryColor: AppColors.russianViolet,
-        //scaffoldBackgroundColor: AppColors.neutros95GhostWhite,
+        primaryColor: AppColors.blackColor,
+        scaffoldBackgroundColor: AppColors.backgroundColor,
         //iconTheme: const IconThemeData(
         //  color: AppColors.russianViolet,
         //  size: 24,
@@ -30,13 +31,13 @@ class AppTheme {
         //  size: 24,
         //),
         //splashColor: AppColors.flame,
-        //appBarTheme: const AppBarTheme(
-        //  actionsIconTheme: IconThemeData(color: AppColors.russianViolet),
-        //  iconTheme: IconThemeData(color: AppColors.russianViolet),
-        //  systemOverlayStyle: SystemUiOverlayStyle.light,
-        //  backgroundColor: AppColors.neutros95GhostWhite,
-        //  elevation: 0,
-        //),
+        appBarTheme: const AppBarTheme(
+          actionsIconTheme: IconThemeData(color: AppColors.blackColor),
+          iconTheme: IconThemeData(color: AppColors.blackColor),
+          //systemOverlayStyle: SystemUiOverlayStyle.light,
+          backgroundColor: AppColors.backgroundColor,
+          elevation: 0,
+        ),
         //cardTheme: AppCardTheme.lightCardTheme,
         //cardColor: AppCardTheme.lightCardTheme.color,
         //shadowColor: AppCardTheme.shadowColor,

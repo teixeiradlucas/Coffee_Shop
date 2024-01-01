@@ -1,4 +1,5 @@
 import 'package:app_coffee_shop/constants/components/app_dimension.dart';
+import 'package:app_coffee_shop/constants/components/app_text.dart';
 import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
 import 'package:app_coffee_shop/constants/themes/app_colors.dart';
 import 'package:app_coffee_shop/model/coffee.dart';
@@ -19,7 +20,7 @@ class HomeView extends StatelessWidget {
           gap,
           _news(context),
           gap,
-          const Text(AppStringsGeneric.bestSellers),
+          AppText.h1(AppStringsGeneric.bestSellers),
           gapM,
           _bestSellers(items),
           _category(context),
@@ -30,8 +31,8 @@ class HomeView extends StatelessWidget {
 
   AppBar _appBar() {
     return AppBar(
-      title: const Center(
-        child: Text(AppStringsGeneric.appName),
+      title: Center(
+        child: AppText.h1(AppStringsGeneric.appName),
       ),
       leading: IconButton(
         onPressed: () {},
@@ -57,17 +58,9 @@ class HomeView extends StatelessWidget {
       width: screenWidth - 20,
       child: Row(
         children: [
-          const Column(
+          Column(
             children: [
-              Text(
-                'Espresso irresistível, \nmomentos inesquecíveis.',
-                style: TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w700,
-                  height: 1.5,
-                  color: AppColors.whiteColor,
-                ),
-              ),
+              AppText.h2('Espresso irresistível, \nmomentos inesquecíveis.'),
             ],
           ),
           SizedBox(
@@ -84,6 +77,7 @@ class HomeView extends StatelessWidget {
 SizedBox _bestSellers(List<Coffee> items) {
   final activeCoffees =
       items.where((coffee) => coffee.isAtive && coffee.bestSellers).toList();
+
   return SizedBox(
     height: 200,
     child: ListView.builder(
@@ -92,10 +86,11 @@ SizedBox _bestSellers(List<Coffee> items) {
       itemCount: activeCoffees.length,
       itemBuilder: (context, index) {
         final coffe = activeCoffees[index];
+        final realPrice = formattedPrice(coffe.price);
         return CoffeeItem(
           title: coffe.name,
           type: coffe.beverageType,
-          price: coffe.price.toString(),
+          price: realPrice,
           imageAssets: coffe.imageAssets,
         );
       },
@@ -118,4 +113,12 @@ SingleChildScrollView _category(BuildContext context) {
       ],
     ),
   );
+}
+
+String formattedPrice(double valor) {
+  var valorString = valor.toStringAsFixed(2);
+  valorString = valorString.replaceAll('.', ',');
+  valorString = 'R\$ $valorString';
+
+  return valorString;
 }

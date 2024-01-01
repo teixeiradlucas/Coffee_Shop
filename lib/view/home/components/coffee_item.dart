@@ -1,4 +1,5 @@
 import 'package:app_coffee_shop/constants/components/app_dimension.dart';
+import 'package:app_coffee_shop/constants/components/app_text.dart';
 import 'package:app_coffee_shop/constants/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -25,14 +26,14 @@ class CoffeeItem extends StatelessWidget {
         child: Container(
           height: 200,
           width: 130,
-          color: AppColors.brownCoffeeColor,
+          color: AppColors.whiteColor,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(10),
                 child: SizedBox(
-                  height: 100,
+                  height: 115,
                   width: 130,
                   child: FittedBox(
                     fit: BoxFit.fitWidth,
@@ -43,11 +44,11 @@ class CoffeeItem extends StatelessWidget {
                 ),
               ),
               gapM,
-              Text(title),
+              AppText.body(title),
+              gapS,
+              AppText.descrition(type),
               gapM,
-              Text(type),
-              gapM,
-              Text(price),
+              AppText.body(price),
             ],
           ),
         ),
