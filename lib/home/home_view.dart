@@ -16,6 +16,7 @@ class HomeView extends StatelessWidget {
       appBar: _appBar(),
       body: Column(
         children: [
+          gap,
           _news(context),
           gap,
           const Text(AppStringsGeneric.bestSellers),
@@ -53,21 +54,26 @@ class HomeView extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       height: 150,
-      width: screenWidth - 10,
-      child: const Row(
+      width: screenWidth - 20,
+      child: Row(
         children: [
-          Column(
+          const Column(
             children: [
               Text(
-                'Espresso irresistível, momentos inesquecíveis.',
+                'Espresso irresistível, \nmomentos inesquecíveis.',
                 style: TextStyle(
-                  fontSize: 24,
+                  fontSize: 20,
                   fontWeight: FontWeight.w700,
                   height: 1.5,
                   color: AppColors.whiteColor,
                 ),
               ),
             ],
+          ),
+          SizedBox(
+            height: 120,
+            width: 120,
+            child: Image.asset('assets/images/coffeenew.png'),
           ),
         ],
       ),
@@ -90,6 +96,7 @@ SizedBox _bestSellers(List<Coffee> items) {
           title: coffe.name,
           type: coffe.beverageType,
           price: coffe.price.toString(),
+          imageAssets: coffe.imageAssets,
         );
       },
     ),
@@ -103,13 +110,11 @@ SingleChildScrollView _category(BuildContext context) {
       children: [
         TextButton(
           onPressed: () async => GoRouter.of(context).push('/favorites'),
-          child: const Text('Processador'),
+          child: const Text('Cappuccino'),
         ),
-        TextButton(onPressed: () {}, child: const Text('Placa mãe')),
-        TextButton(onPressed: () {}, child: const Text('Placa de vídeo')),
-        TextButton(onPressed: () {}, child: const Text('Memória ram')),
-        TextButton(onPressed: () {}, child: const Text('Gabinete')),
-        TextButton(onPressed: () {}, child: const Text('Processador')),
+        TextButton(onPressed: () {}, child: const Text('Espresso')),
+        TextButton(onPressed: () {}, child: const Text('Latte')),
+        TextButton(onPressed: () {}, child: const Text('Mocha')),
       ],
     ),
   );
