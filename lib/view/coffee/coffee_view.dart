@@ -1,4 +1,4 @@
-import 'package:app_coffee_shop/constants/components/app_text.dart';
+import 'package:app_coffee_shop/constants/components/custom_text.dart';
 import 'package:app_coffee_shop/model/coffee.dart';
 import 'package:flutter/material.dart';
 
@@ -19,8 +19,8 @@ class CoffeeView extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          AppText.h1(itemCoffees[0].name),
-          AppText.body(itemCoffees[0].intensity.toString()),
+          CustomText.h1(itemCoffees[0].name),
+          CustomText.body(itemCoffees[0].intensity.toString()),
         ],
       ),
     );

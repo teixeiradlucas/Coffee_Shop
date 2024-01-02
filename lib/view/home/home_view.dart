@@ -1,5 +1,5 @@
 import 'package:app_coffee_shop/constants/components/app_dimension.dart';
-import 'package:app_coffee_shop/constants/components/app_text.dart';
+import 'package:app_coffee_shop/constants/components/custom_text.dart';
 import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
 import 'package:app_coffee_shop/constants/themes/app_colors.dart';
 import 'package:app_coffee_shop/model/coffee.dart';
@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
           gap,
           _news(context),
           gap,
-          AppText.h1(AppStringsGeneric.bestSellers),
+          CustomText.h1(AppStringsGeneric.bestSellers),
           gapM,
           _bestSellers(items),
           _category(context),
@@ -31,7 +31,7 @@ class HomeView extends StatelessWidget {
 
   AppBar _appBar() {
     return AppBar(
-      title: Center(child: AppText.h1(AppStringsGeneric.appName)),
+      title: Center(child: CustomText.h1(AppStringsGeneric.appName)),
     );
   }
 
@@ -52,7 +52,7 @@ class HomeView extends StatelessWidget {
             child: SizedBox(
               height: 120,
               width: screenWidth * 0.65,
-              child: AppText.h2(
+              child: CustomText.h2(
                 'Espresso irresistível, momentos inesquecíveis.',
               ),
             ),
@@ -66,7 +66,7 @@ class HomeView extends StatelessWidget {
                 color: AppColors.whiteColor,
                 borderRadius: BorderRadius.circular(AppDimens.kPaddingM),
               ),
-              child: Center(child: AppText.h1('ATÉ 20% OFF')),
+              child: Center(child: CustomText.h1('ATÉ 20% OFF')),
             ),
           ),
           Positioned(

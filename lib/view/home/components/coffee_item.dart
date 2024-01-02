@@ -1,5 +1,5 @@
 import 'package:app_coffee_shop/constants/components/app_dimension.dart';
-import 'package:app_coffee_shop/constants/components/app_text.dart';
+import 'package:app_coffee_shop/constants/components/custom_text.dart';
 import 'package:app_coffee_shop/constants/themes/app_colors.dart';
 import 'package:app_coffee_shop/model/coffee.dart';
 import 'package:flutter/material.dart';
@@ -54,15 +54,15 @@ class CoffeeItem extends StatelessWidget {
                     ),
                   ),
                   gapM,
-                  AppText.body(itemCoffee.name),
+                  CustomText.body(itemCoffee.name),
                   gapS,
-                  AppText.descrition(itemCoffee.beverageType),
+                  CustomText.descrition(itemCoffee.beverageType),
                   gapM,
                   Row(
                     children: [
-                      AppText.body(realPrice),
+                      CustomText.body(realPrice),
                       gapM,
-                      AppText.sale(discountMessage),
+                      CustomText.sale(discountMessage),
                     ],
                   ),
                 ],
