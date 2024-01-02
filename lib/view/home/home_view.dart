@@ -49,16 +49,12 @@ class HomeView extends StatelessWidget {
           Positioned(
             top: 35,
             left: 20,
-            child: Column(
-              children: [
-                SizedBox(
-                  height: 120,
-                  width: screenWidth * 0.65,
-                  child: AppText.h2(
-                    'Espresso irresistível, momentos inesquecíveis.',
-                  ),
-                ),
-              ],
+            child: SizedBox(
+              height: 120,
+              width: screenWidth * 0.65,
+              child: AppText.h2(
+                'Espresso irresistível, momentos inesquecíveis.',
+              ),
             ),
           ),
           Positioned(
