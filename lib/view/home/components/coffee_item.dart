@@ -25,7 +25,7 @@ class CoffeeItem extends StatelessWidget {
 
     return GestureDetector(
       onTap: () async =>
-          GoRouter.of(context).push('/coffee_view/${itemCoffee.id.toString()}'),
+          GoRouter.of(context).push('/coffee_view/${itemCoffee.id}'),
       child: Padding(
         padding: const EdgeInsets.all(AppDimens.kPaddingM),
         child: ClipRRect(
