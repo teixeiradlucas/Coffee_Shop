@@ -19,94 +19,100 @@ class CoffeeView extends StatelessWidget {
     final id = int.parse(idCoffe);
     final itemCoffees = items.where((coffee) => coffee.id == id).toList();
     return Scaffold(
-      body: Stack(
+      body: SafeArea(
+        child: Column(
+          children: [
+            _coffeeContent(size, itemCoffees, context),
+          ],
+        ),
+      ),
+    );
+  }
+
+  SizedBox _coffeeContent(
+    Size size,
+    List<Coffee> itemCoffees,
+    BuildContext context,
+  ) {
+    return SizedBox(
+      height: size.height * 0.6,
+      child: Stack(
         children: [
-          _image(size, itemCoffees),
-          _buttonBack(context),
-          _descrition(size, itemCoffees),
-        ],
-      ),
-    );
-  }
-
-  Positioned _descrition(Size size, List<Coffee> itemCoffees) {
-    return Positioned(
-      top: size.height * 0.45,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(
-          AppDimens.kPaddingXL,
-        ),
-        child: Container(
-          width: size.width,
-          height: 150,
-          color: AppColors.blackColor.withOpacity(0.5),
-          child: Padding(
-            padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                CustomText.h3(itemCoffees[0].name),
-                CustomText.h2(itemCoffees[0].beverageType),
-                Row(
-                  children: [
-                    Expanded(child: CustomText.h2('Intensidade 5')),
-                    const Icon(
-                      Icons.star,
-                      color: AppColors.yellowColor,
-                      size: 30,
-                    ),
-                    CustomText.h3('4.5'),
-                    gap,
-                  ],
+          Positioned(
+            top: 0,
+            child: ClipRRect(
+              borderRadius: const BorderRadius.only(
+                bottomLeft: Radius.circular(AppDimens.kPaddingXL),
+                bottomRight: Radius.circular(AppDimens.kPaddingXL),
+              ),
+              child: SizedBox(
+                height: size.height * 0.6,
+                width: size.width,
+                child: FittedBox(
+                  fit: BoxFit.cover,
+                  child: Image.asset(itemCoffees[0].imageAssets),
                 ),
-              ],
+              ),
             ),
           ),
-        ),
-      ),
-    );
-  }
-
-  Positioned _image(Size size, List<Coffee> itemCoffees) {
-    return Positioned(
-      top: -25,
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(
-          AppDimens.kPaddingXL,
-        ),
-        child: SizedBox(
-          width: size.width,
-          height: size.height * 0.64,
-          child: FittedBox(
-            fit: BoxFit.cover,
-            child: Image.asset(itemCoffees[0].imageAssets),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Positioned _buttonBack(BuildContext context) {
-    return Positioned(
-      top: 5,
-      left: 5,
-      child: GestureDetector(
-        onTap: () => Navigator.pop(context),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(
-            AppDimens.kPaddingXL,
-          ),
-          child: Container(
-            height: 50,
-            width: 50,
-            color: AppColors.blackColor.withOpacity(0.5),
-            child: const Icon(
-              Icons.arrow_back,
-              color: AppColors.whiteColor,
+          Positioned(
+            top: 5,
+            left: 5,
+            child: GestureDetector(
+              onTap: () => Navigator.pop(context),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(
+                  AppDimens.kPaddingXL,
+                ),
+                child: Container(
+                  height: 50,
+                  width: 50,
+                  color: AppColors.blackColor.withOpacity(0.5),
+                  child: const Icon(
+                    Icons.arrow_back,
+                    color: AppColors.whiteColor,
+                  ),
+                ),
+              ),
             ),
           ),
-        ),
+          Positioned(
+            bottom: 0,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(
+                AppDimens.kPaddingXL,
+              ),
+              child: Container(
+                width: size.width,
+                height: 150,
+                color: AppColors.blackColor.withOpacity(0.5),
+                child: Padding(
+                  padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomText.h3(itemCoffees[0].name),
+                      CustomText.h2(itemCoffees[0].beverageType),
+                      Row(
+                        children: [
+                          Expanded(child: CustomText.h2('Intensidade 5')),
+                          const Icon(
+                            Icons.star,
+                            color: AppColors.yellowColor,
+                            size: 30,
+                          ),
+                          CustomText.h3('4.5'),
+                          gap,
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
