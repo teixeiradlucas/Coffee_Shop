@@ -36,5 +36,9 @@ flutter:
     - family: Inter
       fonts:
         - asset: assets/fonts/Inter.ttf
+    
+    - family: InterBold
+      fonts:
+        - asset: assets/fonts/Inter-Bold.ttf
 
 

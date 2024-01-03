@@ -8,7 +8,7 @@ class CustomText {
       text,
       style: const TextStyle(
         fontFamily: AppFonts.poppins,
-        fontSize: 20,
+        fontSize: 26,
         fontWeight: FontWeight.w700,
         height: 1.5,
         color: AppColors.blackColor,
@@ -33,12 +33,55 @@ class CustomText {
     );
   }
 
+  static Widget h3(String text) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontFamily: AppFonts.interBold,
+        fontSize: 26,
+        fontWeight: FontWeight.w500,
+        height: 1.5,
+        color: Colors.white,
+      ),
+      maxLines: 2,
+      textAlign: TextAlign.start,
+    );
+  }
+
   static Widget body(String text) {
     return Text(
       text,
       style: const TextStyle(
         fontFamily: AppFonts.inter,
         fontSize: 12,
+        fontWeight: FontWeight.w700,
+        height: 1,
+        color: AppColors.blackColor,
+      ),
+      textAlign: TextAlign.start,
+    );
+  }
+
+  static Widget body2(String text) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontFamily: AppFonts.inter,
+        fontSize: 12,
+        fontWeight: FontWeight.w700,
+        height: 1,
+        color: AppColors.whiteColor,
+      ),
+      textAlign: TextAlign.start,
+    );
+  }
+
+  static Widget body3(String text) {
+    return Text(
+      text,
+      style: const TextStyle(
+        fontFamily: AppFonts.inter,
+        fontSize: 20,
         fontWeight: FontWeight.w700,
         height: 1,
         color: AppColors.blackColor,
