@@ -20,7 +20,7 @@ class HomeView extends StatelessWidget {
           gap,
           _news(context),
           gap,
-          CustomText.h1(AppStringsGeneric.bestSellers),
+          CustomText.body3(AppStringsGeneric.bestSellers),
           gapM,
           _bestSellers(items),
           _category(context),
@@ -66,7 +66,7 @@ class HomeView extends StatelessWidget {
                 color: AppColors.whiteColor,
                 borderRadius: BorderRadius.circular(AppDimens.kPaddingM),
               ),
-              child: Center(child: CustomText.h1('ATÉ 20% OFF')),
+              child: Center(child: CustomText.body3('ATÉ 20% OFF')),
             ),
           ),
           Positioned(
