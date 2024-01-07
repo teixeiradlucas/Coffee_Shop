@@ -2,6 +2,7 @@ import 'package:app_coffee_shop/constants/components/app_dimension.dart';
 import 'package:app_coffee_shop/constants/components/custom_text.dart';
 import 'package:app_coffee_shop/constants/themes/app_colors.dart';
 import 'package:app_coffee_shop/model/coffee.dart';
+import 'package:app_coffee_shop/view/home/components/price.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -15,13 +16,8 @@ class CoffeeItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var discountMessage = '';
-    if (itemCoffee.beverageType == 'Espresso') {
-      discountMessage = '20% OFF';
-    } else if (itemCoffee.beverageType == 'Cappuccino') {
-      discountMessage = '12% OFF';
-    }
-    final realPrice = formattedPrice(computarDesconto(itemCoffee));
+    final realPrice = finalPrice(itemCoffee);
+    final discountMessage = textDiscount(itemCoffee);
 
     return GestureDetector(
       onTap: () async =>
@@ -47,9 +43,7 @@ class CoffeeItem extends StatelessWidget {
                       width: 130,
                       child: FittedBox(
                         fit: BoxFit.fitWidth,
-                        child: Image.asset(
-                          itemCoffee.imageAssets,
-                        ),
+                        child: Image.asset(itemCoffee.imageAssets),
                       ),
                     ),
                   ),
@@ -73,25 +67,4 @@ class CoffeeItem extends StatelessWidget {
       ),
     );
   }
-}
-
-String formattedPrice(double valor) {
-  var valorString = valor.toStringAsFixed(2);
-  valorString = valorString.replaceAll('.', ',');
-  valorString = 'R\$ $valorString';
-
-  return valorString;
-}
-
-double computarDesconto(Coffee coffee) {
-  var percentualDesconto = 0.0;
-  if (coffee.beverageType == 'Espresso') {
-    percentualDesconto = 0.20;
-  } else if (coffee.beverageType == 'Cappuccino') {
-    percentualDesconto = 0.12;
-  }
-
-  final precoComDesconto = coffee.price - (coffee.price * percentualDesconto);
-
-  return precoComDesconto;
 }
