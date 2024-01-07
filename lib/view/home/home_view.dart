@@ -54,6 +54,7 @@ class HomeView extends StatelessWidget {
               width: screenWidth * 0.65,
               child: CustomText.h2(
                 'Espresso irresistível, momentos inesquecíveis.',
+                color: AppColors.whiteColor,
               ),
             ),
           ),
