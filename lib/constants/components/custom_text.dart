@@ -3,30 +3,36 @@ import 'package:app_coffee_shop/constants/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class CustomText {
-  static Widget h1(String text) {
+  static Widget h1(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: AppFonts.poppins,
         fontSize: 26,
         fontWeight: FontWeight.w700,
         height: 1.5,
-        color: AppColors.blackColor,
+        color: color,
       ),
       maxLines: 3,
       textAlign: TextAlign.start,
     );
   }
 
-  static Widget h2(String text) {
+  static Widget h2(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: AppFonts.poppins,
         fontSize: 20,
         fontWeight: FontWeight.w500,
         height: 1.2,
-        color: AppColors.whiteColor,
+        color: color,
       ),
       maxLines: 2,
       textAlign: TextAlign.start,
@@ -41,7 +47,7 @@ class CustomText {
         fontSize: 26,
         fontWeight: FontWeight.w500,
         height: 1.5,
-        color: Colors.white,
+        color: AppColors.whiteColor,
       ),
       maxLines: 2,
       textAlign: TextAlign.start,
