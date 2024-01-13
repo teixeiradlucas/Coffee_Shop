@@ -28,32 +28,63 @@ class CoffeeView extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           _coffeeContent(size, itemCoffees, context),
-          Padding(
-            padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
-            child: CustomText.h1('Tamanho'),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
-            child: _sizeCoffee(size, Container()),
-          ),
+          _size(size),
           _buy(realPrice, size),
         ],
       ),
     );
   }
 
-  ClipRRect _sizeCoffee(
-    Size size,
+  Column _size(Size size) {
+    return Column(
+      children: [
+        CustomText.h1('Tamanho'),
+        Padding(
+          padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
+          child: _sizeCoffee(
+            size.width,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _sizeCoffee(
+                  size.width * 0.3,
+                  Center(child: CustomText.h2('Pequeno')),
+                  color: AppColors.beigeColor,
+                ),
+                _sizeCoffee(
+                  size.width * 0.3,
+                  Center(child: CustomText.h2('Médio')),
+                ),
+                _sizeCoffee(
+                  size.width * 0.3,
+                  Center(child: CustomText.h2('Grande')),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+
+  DecoratedBox _sizeCoffee(
+    double width,
     Widget child, {
+    Color color = AppColors.whiteColor,
     double padding = AppDimens.kPaddingXXL,
   }) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(padding),
-      child: Container(
-        color: AppColors.whiteColor,
-        width: size.width,
-        height: 60,
-        child: child,
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(padding),
+      ),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(padding),
+        child: Container(
+          color: color,
+          width: width,
+          height: 50,
+          child: child,
+        ),
       ),
     );
   }
