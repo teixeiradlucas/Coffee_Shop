@@ -1,4 +1,4 @@
-import 'package:app_coffee_shop/model/coffee.dart';
+import 'package:coffee_shop/model/coffee.dart';
 
 String finalPrice(Coffee coffee) {
   final valorPrice = formattedPrice(finalDiscount(coffee));

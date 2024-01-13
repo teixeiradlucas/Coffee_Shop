@@ -1,4 +1,4 @@
-import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
+import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:flutter/material.dart';
 
 class FavoritesView extends StatelessWidget {

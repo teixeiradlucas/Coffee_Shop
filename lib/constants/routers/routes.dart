@@ -1,6 +1,6 @@
-import 'package:app_coffee_shop/view/coffee/coffee_view.dart';
-import 'package:app_coffee_shop/view/favorites/favorites_view.dart';
-import 'package:app_coffee_shop/view/home/home_view.dart';
+import 'package:coffee_shop/view/coffee/coffee_view.dart';
+import 'package:coffee_shop/view/favorites/favorites_view.dart';
+import 'package:coffee_shop/view/home/home_view.dart';
 import 'package:go_router/go_router.dart';
 
 final routes = GoRouter(
