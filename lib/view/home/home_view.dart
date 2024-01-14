@@ -3,6 +3,7 @@ import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
+import 'package:coffee_shop/view/home/components/coffe_item_type.dart';
 import 'package:coffee_shop/view/home/components/coffee_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -13,17 +14,26 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final items = coffees;
+    final activeCoffees = items.where((coffee) => coffee.isAtive).toList();
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: _appBar(),
       body: Column(
         children: [
-          gap,
-          _news(context),
-          gap,
-          CustomText.body3(AppStringsGeneric.bestSellers),
-          gapM,
-          _bestSellers(items),
+          _news(context, size.height * 0.2),
+          _bestSellers(items, size.height * 0.25),
           _category(context),
+          SizedBox(
+            height: size.height * 0.3,
+            child: ListView.builder(
+              physics: const BouncingScrollPhysics(),
+              itemCount: activeCoffees.length,
+              itemBuilder: (context, index) {
+                final coffee = activeCoffees[index];
+                return CoffeeItemType(itemCoffee: coffee);
+              },
+            ),
+          ),
         ],
       ),
     );
@@ -35,14 +45,14 @@ class HomeView extends StatelessWidget {
     );
   }
 
-  Container _news(BuildContext context) {
+  Container _news(BuildContext context, double height) {
     final screenWidth = MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         color: AppColors.brownCoffeeColor,
         borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
       ),
-      height: 180,
+      height: height,
       width: screenWidth - 20,
       child: Stack(
         children: [
@@ -89,21 +99,27 @@ class HomeView extends StatelessWidget {
   }
 }
 
-SizedBox _bestSellers(List<Coffee> items) {
+Column _bestSellers(List<Coffee> items, double height) {
   final activeCoffees =
       items.where((coffee) => coffee.isAtive && coffee.bestSellers).toList();
-
-  return SizedBox(
-    height: 200,
-    child: ListView.builder(
-      physics: const BouncingScrollPhysics(),
-      scrollDirection: Axis.horizontal,
-      itemCount: activeCoffees.length,
-      itemBuilder: (context, index) {
-        final coffee = activeCoffees[index];
-        return CoffeeItem(itemCoffee: coffee);
-      },
-    ),
+  return Column(
+    children: [
+      gap,
+      CustomText.body3(AppStringsGeneric.bestSellers),
+      gapM,
+      SizedBox(
+        height: height,
+        child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          scrollDirection: Axis.horizontal,
+          itemCount: activeCoffees.length,
+          itemBuilder: (context, index) {
+            final coffee = activeCoffees[index];
+            return CoffeeItem(itemCoffee: coffee);
+          },
+        ),
+      ),
+    ],
   );
 }
 
