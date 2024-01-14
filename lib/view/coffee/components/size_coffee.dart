@@ -1,6 +1,6 @@
-import 'package:app_coffee_shop/constants/components/app_dimension.dart';
-import 'package:app_coffee_shop/constants/components/custom_text.dart';
-import 'package:app_coffee_shop/constants/themes/app_colors.dart';
+import 'package:coffee_shop/constants/components/app_dimension.dart';
+import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
 class SizeCoffee extends StatelessWidget {

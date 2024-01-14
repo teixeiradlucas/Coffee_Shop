@@ -1,12 +1,11 @@
-
-import 'package:app_coffee_shop/constants/components/app_dimension.dart';
-import 'package:app_coffee_shop/constants/components/custom_text.dart';
-import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
-import 'package:app_coffee_shop/constants/themes/app_colors.dart';
-import 'package:app_coffee_shop/model/coffee.dart';
-import 'package:app_coffee_shop/view/coffee/components/border_container.dart';
-import 'package:app_coffee_shop/view/coffee/components/size_coffee.dart';
-import 'package:app_coffee_shop/view/home/components/price.dart';
+import 'package:coffee_shop/constants/components/app_dimension.dart';
+import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/strings/strings_generic.dart';
+import 'package:coffee_shop/constants/themes/app_colors.dart';
+import 'package:coffee_shop/model/coffee.dart';
+import 'package:coffee_shop/view/coffee/components/border_container.dart';
+import 'package:coffee_shop/view/coffee/components/size_coffee.dart';
+import 'package:coffee_shop/view/home/components/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
