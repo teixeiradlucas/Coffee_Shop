@@ -123,4 +123,23 @@ class CustomText {
       textAlign: TextAlign.start,
     );
   }
+
+  static Widget discount(
+    String text, {
+    Color color = AppColors.grayColor,
+  }) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontFamily: AppFonts.poppins,
+        fontSize: 20,
+        fontWeight: FontWeight.w500,
+        height: 1.2,
+        color: color,
+        decoration: TextDecoration.lineThrough,
+      ),
+      maxLines: 2,
+      textAlign: TextAlign.start,
+    );
+  }
 }
