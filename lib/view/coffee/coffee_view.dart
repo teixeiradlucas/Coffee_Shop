@@ -24,14 +24,13 @@ class CoffeeView extends StatelessWidget {
         .where((coffee) => coffee.id.toString() == idCoffe)
         .toList()
         .first;
-    final realPrice = finalPrice(itemCoffees);
     return Scaffold(
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _coffeeContent(size, itemCoffees, context),
           _descrition(itemCoffees),
-          _buy(realPrice, size),
+          _buy(itemCoffees, size),
         ],
       ),
     );
@@ -188,7 +187,7 @@ class CoffeeView extends StatelessWidget {
     );
   }
 
-  Column _buy(String realPrice, Size size) {
+  Column _buy(Coffee coffee, Size size) {
     //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO
     return Column(
       children: [
@@ -227,7 +226,8 @@ class CoffeeView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       CustomText.h2(AppStringsGeneric.price),
-                      CustomText.h1(realPrice),
+                      CustomText.h1(finalPrice(coffee)),
+                      CustomText.discount(formattedPrice(coffee.price)),
                     ],
                   ),
                   ClipRRect(
