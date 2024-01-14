@@ -118,6 +118,7 @@ class AppTheme {
       );
 
   static ThemeData get darkTheme => ThemeData(
+        //TODO: ADICIONAR TEMA ESCURO
         useMaterial3: false,
         brightness: Brightness.dark,
       );
