@@ -1,6 +1,6 @@
-import 'package:app_coffee_shop/constants/routers/routes.dart';
-import 'package:app_coffee_shop/constants/strings/strings_generic.dart';
-import 'package:app_coffee_shop/constants/themes/app_theme.dart';
+import 'package:coffee_shop/constants/routers/routes.dart';
+import 'package:coffee_shop/constants/strings/strings_generic.dart';
+import 'package:coffee_shop/constants/themes/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class App extends StatelessWidget {

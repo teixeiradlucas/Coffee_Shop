@@ -1,5 +1,5 @@
-import 'package:app_coffee_shop/constants/themes/app_colors.dart';
-import 'package:app_coffee_shop/constants/themes/app_fonts.dart';
+import 'package:coffee_shop/constants/themes/app_colors.dart';
+import 'package:coffee_shop/constants/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class CustomText {

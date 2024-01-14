@@ -1,5 +1,5 @@
-name: app_coffee_shop
-description: "Coffe Shop"
+name: coffee_shop
+description: "Coffe_Shop"
 version: 1.0.0+1
 
 publish_to: 'none'
