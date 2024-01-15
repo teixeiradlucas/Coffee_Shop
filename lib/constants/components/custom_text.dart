@@ -54,6 +54,24 @@ class CustomText {
     );
   }
 
+  static Widget h4(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontFamily: AppFonts.poppins,
+        fontSize: 18,
+        fontWeight: FontWeight.w500,
+        height: 1.2,
+        color: color,
+      ),
+      maxLines: 2,
+      textAlign: TextAlign.start,
+    );
+  }
+
   static Widget body(String text) {
     return Text(
       text,
