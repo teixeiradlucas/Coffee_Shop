@@ -18,52 +18,12 @@ class HomeView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: _appBar(),
-      bottomNavigationBar: _buttomNavigation(size),
+      bottomNavigationBar: _bottomNavigation(context, size),
       body: Column(
         children: [
           _news(context, size.height * 0.2),
-          _bestSellers(items, size.height * 0.25),
-          _category(context, activeCoffees, size.height * 0.30),
-        ],
-      ),
-    );
-  }
-
-  BottomAppBar _buttomNavigation(Size size) {
-    return BottomAppBar(
-      height: size.height * 0.05,
-      color: AppColors.backgroundColor,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.home,
-              size: 30,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.shopping_bag,
-              size: 30,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.favorite,
-              size: 30,
-            ),
-          ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.discount,
-              size: 30,
-            ),
-          ),
+          _bestSellers(items, size.height * 0.23),
+          _category(context, activeCoffees, size.height * 0.32),
         ],
       ),
     );
@@ -163,26 +123,66 @@ Column _category(
       Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          TextButton(
-            onPressed: () async => GoRouter.of(context).push('/favorites'),
-            child: const Text('Cappuccino'),
-          ),
+          TextButton(onPressed: () {}, child: const Text('Cappuccino')),
           TextButton(onPressed: () {}, child: const Text('Espresso')),
           TextButton(onPressed: () {}, child: const Text('Latte')),
           TextButton(onPressed: () {}, child: const Text('Mocha')),
         ],
       ),
-      SizedBox(
-        height: height,
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemCount: activeCoffees.length,
-          itemBuilder: (context, index) {
-            final coffee = activeCoffees[index];
-            return CoffeeItemType(itemCoffee: coffee);
-          },
+      ClipRRect(
+        borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
+        child: SizedBox(
+          height: height,
+          child: ListView.builder(
+            physics: const BouncingScrollPhysics(),
+            itemCount: activeCoffees.length,
+            itemBuilder: (context, index) {
+              final coffee = activeCoffees[index];
+              return CoffeeItemType(itemCoffee: coffee);
+            },
+          ),
         ),
       ),
     ],
+  );
+}
+
+BottomAppBar _bottomNavigation(BuildContext context, Size size) {
+  return BottomAppBar(
+    height: size.height * 0.05,
+    color: AppColors.backgroundColor,
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.home,
+            size: 30,
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.shopping_bag,
+            size: 30,
+          ),
+        ),
+        IconButton(
+          onPressed: () async => GoRouter.of(context).push('/favorites'),
+          icon: const Icon(
+            Icons.favorite,
+            size: 30,
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: const Icon(
+            Icons.discount,
+            size: 30,
+          ),
+        ),
+      ],
+    ),
   );
 }
