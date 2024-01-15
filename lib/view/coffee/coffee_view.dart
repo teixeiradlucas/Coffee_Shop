@@ -176,7 +176,10 @@ class CoffeeView extends StatelessWidget {
 
   Padding _descrition(Coffee itemCoffees) {
     return Padding(
-      padding: const EdgeInsets.all(AppDimens.kPaddingM),
+      padding: const EdgeInsets.only(
+        left: AppDimens.kPaddingXL,
+        right: AppDimens.kPaddingXL,
+      ),
       child: Column(
         children: [
           CustomText.h1(AppStringsGeneric.descrition),
@@ -225,7 +228,6 @@ class CoffeeView extends StatelessWidget {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomText.h2(AppStringsGeneric.price),
                       CustomText.h1(finalPrice(coffee)),
                       CustomText.discount(formattedPrice(coffee.price)),
                     ],
