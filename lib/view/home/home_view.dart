@@ -20,13 +20,16 @@ class HomeView extends StatelessWidget {
     return Scaffold(
       appBar: _appBar(),
       bottomNavigationBar: _bottomNavigation(context),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          _news(context, size.height * 0.18),
-          _bestSellers(items, size.height * 0.25),
-          _category(context, activeCoffees, size.height * 0.28),
-        ],
+      body: SingleChildScrollView(
+        physics: const NeverScrollableScrollPhysics(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            _news(context, size.height * 0.18),
+            _bestSellers(items, size.height * 0.27),
+            _category(context, activeCoffees, size.height * 0.30),
+          ],
+        ),
       ),
     );
   }
@@ -49,7 +52,7 @@ class HomeView extends StatelessWidget {
       child: Stack(
         children: [
           Positioned(
-            top: 35,
+            top: 30,
             left: 20,
             child: SizedBox(
               height: 120,
@@ -61,7 +64,7 @@ class HomeView extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 100,
+            top: 85,
             left: 20,
             child: Container(
               width: 150,
@@ -74,8 +77,8 @@ class HomeView extends StatelessWidget {
             ),
           ),
           Positioned(
-            right: 10,
-            bottom: 0,
+            right: -10,
+            bottom: -10,
             child: SizedBox(
               height: 120,
               width: screenWidth * 0.3,
@@ -122,15 +125,9 @@ Column _category(
 ) {
   return Column(
     children: [
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          TextButton(onPressed: () {}, child: const Text('Cappuccino')),
-          TextButton(onPressed: () {}, child: const Text('Espresso')),
-          TextButton(onPressed: () {}, child: const Text('Latte')),
-          TextButton(onPressed: () {}, child: const Text('Mocha')),
-        ],
-      ),
+      gap,
+      CustomText.body3('Para você'),
+      gapM,
       ClipRRect(
         borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
         child: SizedBox(
