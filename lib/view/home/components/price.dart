@@ -37,3 +37,15 @@ String textDiscount(Coffee coffee) {
   }
   return discountMessage;
 }
+
+String valueDiscount(Coffee coffee) {
+  var valueString = coffee.price.toStringAsFixed(2);
+  if (coffee.beverageType == 'Espresso' ||
+      coffee.beverageType == 'Cappuccino') {
+    valueString = valueString.replaceAll('.', ',');
+    valueString = 'R\$ $valueString';
+  } else {
+    valueString = '';
+  }
+  return valueString;
+}
