@@ -21,6 +21,7 @@ class HomeView extends StatelessWidget {
       appBar: _appBar(),
       bottomNavigationBar: _bottomNavigation(context),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _news(context, size.height * 0.18),
           _bestSellers(items, size.height * 0.25),
