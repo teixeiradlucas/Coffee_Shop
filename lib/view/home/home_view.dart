@@ -18,20 +18,50 @@ class HomeView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: _appBar(),
+      bottomNavigationBar: _buttomNavigation(size),
       body: Column(
         children: [
           _news(context, size.height * 0.2),
           _bestSellers(items, size.height * 0.25),
-          _category(context),
-          SizedBox(
-            height: size.height * 0.3,
-            child: ListView.builder(
-              physics: const BouncingScrollPhysics(),
-              itemCount: activeCoffees.length,
-              itemBuilder: (context, index) {
-                final coffee = activeCoffees[index];
-                return CoffeeItemType(itemCoffee: coffee);
-              },
+          _category(context, activeCoffees, size.height * 0.30),
+        ],
+      ),
+    );
+  }
+
+  BottomAppBar _buttomNavigation(Size size) {
+    return BottomAppBar(
+      height: size.height * 0.05,
+      color: AppColors.backgroundColor,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.home,
+              size: 30,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.shopping_bag,
+              size: 30,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.favorite,
+              size: 30,
+            ),
+          ),
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.discount,
+              size: 30,
             ),
           ),
         ],
@@ -123,19 +153,36 @@ Column _bestSellers(List<Coffee> items, double height) {
   );
 }
 
-SingleChildScrollView _category(BuildContext context) {
-  return SingleChildScrollView(
-    scrollDirection: Axis.horizontal,
-    child: Row(
-      children: [
-        TextButton(
-          onPressed: () async => GoRouter.of(context).push('/favorites'),
-          child: const Text('Cappuccino'),
+Column _category(
+  BuildContext context,
+  List<Coffee> activeCoffees,
+  double height,
+) {
+  return Column(
+    children: [
+      Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          TextButton(
+            onPressed: () async => GoRouter.of(context).push('/favorites'),
+            child: const Text('Cappuccino'),
+          ),
+          TextButton(onPressed: () {}, child: const Text('Espresso')),
+          TextButton(onPressed: () {}, child: const Text('Latte')),
+          TextButton(onPressed: () {}, child: const Text('Mocha')),
+        ],
+      ),
+      SizedBox(
+        height: height,
+        child: ListView.builder(
+          physics: const BouncingScrollPhysics(),
+          itemCount: activeCoffees.length,
+          itemBuilder: (context, index) {
+            final coffee = activeCoffees[index];
+            return CoffeeItemType(itemCoffee: coffee);
+          },
         ),
-        TextButton(onPressed: () {}, child: const Text('Espresso')),
-        TextButton(onPressed: () {}, child: const Text('Latte')),
-        TextButton(onPressed: () {}, child: const Text('Mocha')),
-      ],
-    ),
+      ),
+    ],
   );
 }
