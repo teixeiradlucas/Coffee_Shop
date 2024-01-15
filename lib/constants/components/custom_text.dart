@@ -62,9 +62,9 @@ class CustomText {
       text,
       style: TextStyle(
         fontFamily: AppFonts.poppins,
-        fontSize: 18,
-        fontWeight: FontWeight.w500,
-        height: 1.2,
+        fontSize: 16,
+        fontWeight: FontWeight.w700,
+        height: 1.5,
         color: color,
       ),
       maxLines: 2,
@@ -150,7 +150,7 @@ class CustomText {
       text,
       style: TextStyle(
         fontFamily: AppFonts.poppins,
-        fontSize: 20,
+        fontSize: 16,
         fontWeight: FontWeight.w500,
         height: 1.2,
         color: color,
