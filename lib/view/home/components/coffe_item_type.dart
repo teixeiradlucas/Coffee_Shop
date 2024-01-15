@@ -52,7 +52,7 @@ class CoffeeItemType extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomText.h2(itemCoffee.name),
+                        CustomText.h4(itemCoffee.name),
                         CustomText.descrition(itemCoffee.beverageType),
                         Row(
                           children: [
@@ -61,7 +61,7 @@ class CoffeeItemType extends StatelessWidget {
                             CustomText.sale(discountMessage),
                             gapM,
                             CustomText.discount(
-                              formattedPrice(itemCoffee.price),
+                              valueDiscount(itemCoffee),
                             ),
                           ],
                         ),
@@ -72,7 +72,7 @@ class CoffeeItemType extends StatelessWidget {
                               color: AppColors.yellowColor,
                               size: 30,
                             ),
-                            CustomText.h1(
+                            CustomText.h4(
                               itemCoffee.rating.toString(),
                             ),
                           ],
