@@ -7,6 +7,7 @@ import 'package:coffee_shop/view/home/components/coffe_item_type.dart';
 import 'package:coffee_shop/view/home/components/coffee_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomeView extends StatelessWidget {
   const HomeView({super.key});
@@ -18,12 +19,12 @@ class HomeView extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: _appBar(),
-      bottomNavigationBar: _bottomNavigation(context, size),
+      bottomNavigationBar: _bottomNavigation(context),
       body: Column(
         children: [
-          _news(context, size.height * 0.2),
-          _bestSellers(items, size.height * 0.23),
-          _category(context, activeCoffees, size.height * 0.32),
+          _news(context, size.height * 0.18),
+          _bestSellers(items, size.height * 0.25),
+          _category(context, activeCoffees, size.height * 0.28),
         ],
       ),
     );
@@ -147,42 +148,46 @@ Column _category(
   );
 }
 
-BottomAppBar _bottomNavigation(BuildContext context, Size size) {
-  return BottomAppBar(
-    height: size.height * 0.05,
-    color: AppColors.backgroundColor,
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: [
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.home,
-            size: 30,
+Padding _bottomNavigation(BuildContext context) {
+  return Padding(
+    padding: const EdgeInsets.all(AppDimens.kPaddingS),
+    child: ClipRRect(
+      borderRadius: const BorderRadius.all(
+        Radius.circular(AppDimens.kPaddingXL),
+      ),
+      child: GNav(
+        backgroundColor: AppColors.whiteColor,
+        tabBackgroundColor: AppColors.brownCoffeeColor,
+        padding: const EdgeInsets.all(AppDimens.kPadding * 2),
+        gap: 8,
+        tabs: [
+          const GButton(
+            icon: Icons.home,
+            text: 'Home',
+            iconActiveColor: AppColors.whiteColor,
+            textColor: AppColors.whiteColor,
           ),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.shopping_bag,
-            size: 30,
+          GButton(
+            onPressed: () async => GoRouter.of(context).push('/favorites'),
+            icon: Icons.favorite,
+            text: 'Favoritos',
+            iconActiveColor: AppColors.whiteColor,
+            textColor: AppColors.whiteColor,
           ),
-        ),
-        IconButton(
-          onPressed: () async => GoRouter.of(context).push('/favorites'),
-          icon: const Icon(
-            Icons.favorite,
-            size: 30,
+          const GButton(
+            icon: Icons.shopping_bag,
+            text: 'Carrinho',
+            iconActiveColor: AppColors.whiteColor,
+            textColor: AppColors.whiteColor,
           ),
-        ),
-        IconButton(
-          onPressed: () {},
-          icon: const Icon(
-            Icons.discount,
-            size: 30,
+          const GButton(
+            icon: Icons.discount,
+            text: 'Oferta',
+            iconActiveColor: AppColors.whiteColor,
+            textColor: AppColors.whiteColor,
           ),
-        ),
-      ],
+        ],
+      ),
     ),
   );
 }
