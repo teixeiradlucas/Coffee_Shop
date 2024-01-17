@@ -6,8 +6,6 @@ import 'package:coffee_shop/model/coffee.dart';
 import 'package:coffee_shop/view/components/category_coffee.dart';
 import 'package:coffee_shop/view/components/coffee_item.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
-import 'package:google_nav_bar/google_nav_bar.dart';
 
 class HomeCoffeeView extends StatelessWidget {
   const HomeCoffeeView({super.key});
@@ -19,7 +17,6 @@ class HomeCoffeeView extends StatelessWidget {
       appBar: AppBar(
         title: Center(child: CustomText.h1(AppStringsGeneric.appName)),
       ),
-      bottomNavigationBar: _bottomNavigation(context),
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
@@ -112,52 +109,5 @@ Column _bestSellers(
         ),
       ),
     ],
-  );
-}
-
-Padding _bottomNavigation(BuildContext context) {
-  return Padding(
-    padding: const EdgeInsets.all(AppDimens.kPaddingS),
-    child: ClipRRect(
-      borderRadius: const BorderRadius.all(
-        Radius.circular(AppDimens.kPaddingXL),
-      ),
-      child: GNav(
-        backgroundColor: AppColors.whiteColor,
-        tabBackgroundColor: AppColors.brownCoffeeColor,
-        padding: const EdgeInsets.all(AppDimens.kPadding * 2),
-        onTabChange: (index) {
-          print(index);
-        },
-        gap: 8,
-        tabs: [
-          const GButton(
-            icon: Icons.home,
-            text: 'Home',
-            iconActiveColor: AppColors.whiteColor,
-            textColor: AppColors.whiteColor,
-          ),
-          GButton(
-            onPressed: () async => GoRouter.of(context).push('/favorites'),
-            icon: Icons.favorite,
-            text: 'Favoritos',
-            iconActiveColor: AppColors.whiteColor,
-            textColor: AppColors.whiteColor,
-          ),
-          const GButton(
-            icon: Icons.shopping_bag,
-            text: 'Carrinho',
-            iconActiveColor: AppColors.whiteColor,
-            textColor: AppColors.whiteColor,
-          ),
-          const GButton(
-            icon: Icons.discount,
-            text: 'Oferta',
-            iconActiveColor: AppColors.whiteColor,
-            textColor: AppColors.whiteColor,
-          ),
-        ],
-      ),
-    ),
   );
 }
