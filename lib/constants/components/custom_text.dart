@@ -91,12 +91,13 @@ class CustomText {
       text,
       style: const TextStyle(
         fontFamily: AppFonts.inter,
-        fontSize: 12,
+        fontSize: 10,
         fontWeight: FontWeight.w700,
         height: 1,
-        color: AppColors.whiteColor,
+        color: AppColors.blackColor,
       ),
       textAlign: TextAlign.start,
+      maxLines: 1,
     );
   }
 
