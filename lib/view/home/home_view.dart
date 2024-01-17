@@ -3,7 +3,7 @@ import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
-import 'package:coffee_shop/view/home/components/coffe_item_type.dart';
+import 'package:coffee_shop/view/home/components/category_coffee.dart';
 import 'package:coffee_shop/view/home/components/coffee_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -14,41 +14,35 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final items = coffees;
-    final activeCoffees = items.where((coffee) => coffee.isAtive).toList();
-    final size = MediaQuery.of(context).size;
+    final activeCoffees = coffees.where((coffee) => coffee.isAtive).toList();
     return Scaffold(
-      appBar: _appBar(),
+      appBar: AppBar(
+        title: Center(child: CustomText.h1(AppStringsGeneric.appName)),
+      ),
       bottomNavigationBar: _bottomNavigation(context),
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            _news(context, size.height * 0.18),
-            _bestSellers(items, size.height * 0.27),
-            _category(context, activeCoffees, size.height * 0.30),
+            _news(context),
+            _bestSellers(context, activeCoffees),
+            CategoryCoffee(activeCoffees: activeCoffees),
           ],
         ),
       ),
     );
   }
 
-  AppBar _appBar() {
-    return AppBar(
-      title: Center(child: CustomText.h1(AppStringsGeneric.appName)),
-    );
-  }
-
-  Container _news(BuildContext context, double height) {
-    final screenWidth = MediaQuery.of(context).size.width;
+  Container _news(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Container(
       decoration: BoxDecoration(
         color: AppColors.brownCoffeeColor,
         borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
       ),
-      height: height,
-      width: screenWidth - 20,
+      height: size.height * 0.18,
+      width: size.width - 20,
       child: Stack(
         children: [
           Positioned(
@@ -56,7 +50,7 @@ class HomeView extends StatelessWidget {
             left: 20,
             child: SizedBox(
               height: 120,
-              width: screenWidth * 0.65,
+              width: size.width * 0.65,
               child: CustomText.h2(
                 'Espresso irresistível, momentos inesquecíveis.',
                 color: AppColors.whiteColor,
@@ -81,7 +75,7 @@ class HomeView extends StatelessWidget {
             bottom: -10,
             child: SizedBox(
               height: 120,
-              width: screenWidth * 0.3,
+              width: size.width * 0.3,
               child: FittedBox(
                 fit: BoxFit.fitHeight,
                 child: Image.asset('assets/images/coffeenew.png'),
@@ -94,52 +88,27 @@ class HomeView extends StatelessWidget {
   }
 }
 
-Column _bestSellers(List<Coffee> items, double height) {
-  final activeCoffees =
-      items.where((coffee) => coffee.isAtive && coffee.bestSellers).toList();
+Column _bestSellers(
+  BuildContext context,
+  List<Coffee> items,
+) {
+  final size = MediaQuery.of(context).size;
+  final bestCoffees = items.where((coffee) => coffee.bestSellers).toList();
   return Column(
     children: [
       gap,
       CustomText.body3(AppStringsGeneric.bestSellers),
       gapM,
       SizedBox(
-        height: height,
+        height: size.height * 0.27,
         child: ListView.builder(
           physics: const BouncingScrollPhysics(),
           scrollDirection: Axis.horizontal,
-          itemCount: activeCoffees.length,
+          itemCount: bestCoffees.length,
           itemBuilder: (context, index) {
-            final coffee = activeCoffees[index];
+            final coffee = bestCoffees[index];
             return CoffeeItem(itemCoffee: coffee);
           },
-        ),
-      ),
-    ],
-  );
-}
-
-Column _category(
-  BuildContext context,
-  List<Coffee> activeCoffees,
-  double height,
-) {
-  return Column(
-    children: [
-      gap,
-      CustomText.body3('Para você'),
-      gapM,
-      ClipRRect(
-        borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
-        child: SizedBox(
-          height: height,
-          child: ListView.builder(
-            physics: const BouncingScrollPhysics(),
-            itemCount: activeCoffees.length,
-            itemBuilder: (context, index) {
-              final coffee = activeCoffees[index];
-              return CoffeeItemType(itemCoffee: coffee);
-            },
-          ),
         ),
       ),
     ],
@@ -157,6 +126,9 @@ Padding _bottomNavigation(BuildContext context) {
         backgroundColor: AppColors.whiteColor,
         tabBackgroundColor: AppColors.brownCoffeeColor,
         padding: const EdgeInsets.all(AppDimens.kPadding * 2),
+        onTabChange: (index) {
+          print(index);
+        },
         gap: 8,
         tabs: [
           const GButton(
