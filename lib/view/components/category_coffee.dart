@@ -1,7 +1,7 @@
 import 'package:coffee_shop/constants/components/app_dimension.dart';
 import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/model/coffee.dart';
-import 'package:coffee_shop/view/home/components/coffe_item_type.dart';
+import 'package:coffee_shop/view/components/coffe_item_type.dart';
 import 'package:flutter/material.dart';
 
 class CategoryCoffee extends StatelessWidget {

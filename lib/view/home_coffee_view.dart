@@ -3,14 +3,14 @@ import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
-import 'package:coffee_shop/view/home/components/category_coffee.dart';
-import 'package:coffee_shop/view/home/components/coffee_item.dart';
+import 'package:coffee_shop/view/components/category_coffee.dart';
+import 'package:coffee_shop/view/components/coffee_item.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class HomeCoffeeView extends StatelessWidget {
+  const HomeCoffeeView({super.key});
 
   @override
   Widget build(BuildContext context) {

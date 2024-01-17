@@ -2,12 +2,12 @@ import 'package:coffee_shop/constants/components/app_dimension.dart';
 import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
-import 'package:coffee_shop/view/home/components/price.dart';
+import 'package:coffee_shop/view/components/price.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class CoffeeItem extends StatelessWidget {
-  const CoffeeItem({
+class CoffeeItemType extends StatelessWidget {
+  const CoffeeItemType({
     required this.itemCoffee,
     super.key,
   });
@@ -27,19 +27,18 @@ class CoffeeItem extends StatelessWidget {
         child: ClipRRect(
           borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
           child: Container(
-            height: 200,
-            width: 130,
+            height: 150,
             color: AppColors.whiteColor,
             child: Padding(
               padding: const EdgeInsets.all(AppDimens.kPadding),
-              child: Column(
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
                     borderRadius:
                         BorderRadius.circular(AppDimens.kDefaultPadding),
                     child: SizedBox(
-                      height: 115,
+                      height: 145,
                       width: 130,
                       child: FittedBox(
                         fit: BoxFit.fitWidth,
@@ -47,17 +46,39 @@ class CoffeeItem extends StatelessWidget {
                       ),
                     ),
                   ),
-                  gapM,
-                  CustomText.body(itemCoffee.name),
-                  gapS,
-                  CustomText.descrition(itemCoffee.beverageType),
-                  gapM,
-                  Row(
-                    children: [
-                      CustomText.body(realPrice),
-                      gapM,
-                      CustomText.sale(discountMessage),
-                    ],
+                  Padding(
+                    padding: const EdgeInsets.all(AppDimens.kPadding),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        CustomText.h4(itemCoffee.name),
+                        CustomText.descrition(itemCoffee.beverageType),
+                        Row(
+                          children: [
+                            CustomText.h2(realPrice),
+                            gapM,
+                            CustomText.sale(discountMessage),
+                            gapM,
+                            CustomText.discount(
+                              valueDiscount(itemCoffee),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.star,
+                              color: AppColors.yellowColor,
+                              size: 30,
+                            ),
+                            CustomText.h4(
+                              itemCoffee.rating.toString(),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
