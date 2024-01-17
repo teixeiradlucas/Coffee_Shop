@@ -104,7 +104,7 @@ class CoffeeView extends StatelessWidget {
                 AppDimens.kPaddingXL,
               ),
               child: Container(
-                height: 150,
+                height: 160,
                 color: AppColors.blackColor.withOpacity(0.5),
                 child: Padding(
                   padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
