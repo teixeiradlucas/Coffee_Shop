@@ -16,48 +16,19 @@ class FavoritesView extends StatefulWidget {
 }
 
 class _FavoritesViewState extends State<FavoritesView> {
-  late final ProductBloc bloc;
-
-  @override
-  void initState() {
-    super.initState();
-    bloc = BlocProvider.of<ProductBloc>(context);
-  }
-
-  @override
-  Future<void> dispose() async {
-    await bloc.close();
-    super.dispose();
-  }
+  void _removeToCart(Product product) =>
+      context.read<ProductBloc>().add(RemoveProductEvent(product: product));
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(AppStringsGeneric.favorites),
-        actions: [
-          ElevatedButton(
-            onPressed: () {
-              bloc.add(
-                AddProductEvent(
-                  product: Product(
-                    name: 'coffee.name',
-                    id: 1,
-                    value: 'finalPrice(coffee)',
-                  ),
-                ),
-              );
-            },
-            child: const Text('aa'),
-          ),
-        ],
-      ),
+      appBar: AppBar(title: const Text(AppStringsGeneric.favorites)),
       body: SizedBox(
         child: BlocBuilder<ProductBloc, ProductState>(
           builder: (context, state) {
             if (state is ProductInitialState) {
               return const Center(
-                child: CircularProgressIndicator(),
+                child: Text('Lista de favoritos esta vazia'),
               );
             } else if (state is ProductSuccessState) {
               final productsList = state.products;
@@ -73,11 +44,7 @@ class _FavoritesViewState extends State<FavoritesView> {
                   title: Text(productsList[index].name),
                   trailing: IconButton(
                     icon: const Icon(Icons.remove),
-                    onPressed: () {
-                      bloc.add(
-                        RemoveProductEvent(product: productsList[index]),
-                      );
-                    },
+                    onPressed: () => _removeToCart(productsList[index]),
                   ),
                 ),
                 separatorBuilder: (_, __) => const Divider(),

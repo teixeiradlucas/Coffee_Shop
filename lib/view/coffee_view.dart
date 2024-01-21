@@ -27,20 +27,6 @@ class CoffeeView extends StatefulWidget {
 }
 
 class _CoffeeViewState extends State<CoffeeView> {
-  late final ProductBloc bloc;
-
-  @override
-  void initState() {
-    super.initState();
-    bloc = BlocProvider.of<ProductBloc>(context);
-  }
-
-  @override
-  Future<void> dispose() async {
-    await bloc.close();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -54,7 +40,7 @@ class _CoffeeViewState extends State<CoffeeView> {
         children: [
           _coffeeContent(size, itemCoffees, context),
           _descrition(itemCoffees),
-          _buy(bloc, itemCoffees, size),
+          _buy(itemCoffees, size),
         ],
       ),
     );
@@ -214,7 +200,11 @@ class _CoffeeViewState extends State<CoffeeView> {
     );
   }
 
-  Column _buy(ProductBloc bloc, Coffee coffee, Size size) {
+  Column _buy(Coffee coffee, Size size) {
+    void addToCart(Product product) {
+      context.read<ProductBloc>().add(AddProductEvent(product: product));
+    }
+
     //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO
     return Column(
       children: [
@@ -258,13 +248,11 @@ class _CoffeeViewState extends State<CoffeeView> {
                   ),
                   GestureDetector(
                     onTap: () {
-                      bloc.add(
-                        AddProductEvent(
-                          product: Product(
-                            name: coffee.name,
-                            id: coffee.id,
-                            value: finalPrice(coffee),
-                          ),
+                      addToCart(
+                        Product(
+                          name: coffee.name,
+                          id: coffee.id,
+                          value: finalPrice(coffee),
                         ),
                       );
                     },
