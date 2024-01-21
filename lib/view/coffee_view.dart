@@ -1,15 +1,20 @@
+import 'package:coffee_shop/bloc/product_bloc.dart';
+import 'package:coffee_shop/bloc/product_events.dart';
 import 'package:coffee_shop/constants/components/app_dimension.dart';
 import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
+import 'package:coffee_shop/model/product.dart';
+import 'package:coffee_shop/repositories/coffee_repository.dart';
 import 'package:coffee_shop/view/components/border_container.dart';
 import 'package:coffee_shop/view/components/price.dart';
 import 'package:coffee_shop/view/components/size_coffee.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class CoffeeView extends StatelessWidget {
+class CoffeeView extends StatefulWidget {
   const CoffeeView({
     required this.idCoffe,
     super.key,
@@ -18,10 +23,29 @@ class CoffeeView extends StatelessWidget {
   final String idCoffe;
 
   @override
+  State<CoffeeView> createState() => _CoffeeViewState();
+}
+
+class _CoffeeViewState extends State<CoffeeView> {
+  late final ProductBloc bloc;
+
+  @override
+  void initState() {
+    super.initState();
+    bloc = BlocProvider.of<ProductBloc>(context);
+  }
+
+  @override
+  Future<void> dispose() async {
+    await bloc.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     final itemCoffees = coffees
-        .where((coffee) => coffee.id.toString() == idCoffe)
+        .where((coffee) => coffee.id.toString() == widget.idCoffe)
         .toList()
         .first;
     return Scaffold(
@@ -30,7 +54,7 @@ class CoffeeView extends StatelessWidget {
         children: [
           _coffeeContent(size, itemCoffees, context),
           _descrition(itemCoffees),
-          _buy(itemCoffees, size),
+          _buy(bloc, itemCoffees, size),
         ],
       ),
     );
@@ -190,7 +214,7 @@ class CoffeeView extends StatelessWidget {
     );
   }
 
-  Column _buy(Coffee coffee, Size size) {
+  Column _buy(ProductBloc bloc, Coffee coffee, Size size) {
     //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO
     return Column(
       children: [
@@ -232,17 +256,30 @@ class CoffeeView extends StatelessWidget {
                       CustomText.discount(formattedPrice(coffee.price)),
                     ],
                   ),
-                  ClipRRect(
-                    borderRadius:
-                        BorderRadius.circular(AppDimens.kDefaultPadding),
-                    child: Container(
-                      color: AppColors.brownCoffeeColor,
-                      height: size.height * 0.08,
-                      width: size.width * 0.6,
-                      child: Center(
-                        child: CustomText.h2(
-                          AppStringsGeneric.addCart,
-                          color: AppColors.whiteColor,
+                  GestureDetector(
+                    onTap: () {
+                      bloc.add(
+                        AddProductEvent(
+                          product: Product(
+                            name: coffee.name,
+                            id: coffee.id,
+                            value: finalPrice(coffee),
+                          ),
+                        ),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius:
+                          BorderRadius.circular(AppDimens.kDefaultPadding),
+                      child: Container(
+                        color: AppColors.brownCoffeeColor,
+                        height: size.height * 0.08,
+                        width: size.width * 0.6,
+                        child: Center(
+                          child: CustomText.h2(
+                            AppStringsGeneric.addCart,
+                            color: AppColors.whiteColor,
+                          ),
                         ),
                       ),
                     ),

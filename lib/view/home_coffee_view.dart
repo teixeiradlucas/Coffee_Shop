@@ -3,6 +3,7 @@ import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
+import 'package:coffee_shop/repositories/coffee_repository.dart';
 import 'package:coffee_shop/view/components/category_coffee.dart';
 import 'package:coffee_shop/view/components/coffee_item.dart';
 import 'package:flutter/material.dart';
