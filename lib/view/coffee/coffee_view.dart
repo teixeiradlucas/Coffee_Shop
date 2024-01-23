@@ -1,5 +1,6 @@
 import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_events.dart';
+import 'package:coffee_shop/bloc/product_state.dart';
 import 'package:coffee_shop/constants/components/app_dimension.dart';
 import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
@@ -13,6 +14,7 @@ import 'package:coffee_shop/view/components/size_coffee.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class CoffeeView extends StatefulWidget {
   const CoffeeView({
@@ -89,16 +91,44 @@ class _CoffeeViewState extends State<CoffeeView> {
                     ),
                   ),
                   GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                      //TODO:NAVEGAR PARA TELA DO CARRINHO
+                    onTap: () async {
+                      // Navigator.pop(context);
+                      await GoRouter.of(context).push('/cart');
                     },
                     //TODO:ADICIONAR NUMERO DE ITENS NO CARRINHO
-                    child: const BorderContainer(
-                      child: Icon(
-                        Icons.shopping_bag,
-                        color: AppColors.whiteColor,
-                      ),
+                    child: Stack(
+                      children: [
+                        const BorderContainer(
+                          child: Icon(
+                            Icons.shopping_bag,
+                            color: AppColors.whiteColor,
+                          ),
+                        ),
+                        Positioned(
+                          bottom: 0,
+                          child: BlocBuilder<ProductBloc, ProductState>(
+                            builder: (context, state) {
+                              if (state is ProductInitialState) {
+                                return Container();
+                              } else if (state is ProductSuccessState) {
+                                return SizedBox(
+                                  //color: Colors.white,
+                                  height: 30,
+                                  width: 30,
+                                  child: BorderContainer(
+                                    child: CustomText.body(
+                                      color: AppColors.whiteColor,
+                                      state.products.length.toString(),
+                                    ),
+                                  ),
+                                );
+                              } else {
+                                return Container();
+                              }
+                            },
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
@@ -246,32 +276,56 @@ class _CoffeeViewState extends State<CoffeeView> {
                       CustomText.discount(formattedPrice(coffee.price)),
                     ],
                   ),
-                  GestureDetector(
-                    onTap: () {
-                      addToCart(
+                  SizedBox(
+                    height: 80,
+                    width: 220,
+                    child: ElevatedButton(
+                      onPressed: () => addToCart(
                         Product(
                           name: coffee.name,
                           id: coffee.id,
                           value: finalPrice(coffee),
+                          size: 'M',
                         ),
-                      );
-                    },
-                    child: ClipRRect(
-                      borderRadius:
-                          BorderRadius.circular(AppDimens.kDefaultPadding),
-                      child: Container(
-                        color: AppColors.brownCoffeeColor,
-                        height: size.height * 0.08,
-                        width: size.width * 0.6,
-                        child: Center(
-                          child: CustomText.h2(
-                            AppStringsGeneric.addCart,
-                            color: AppColors.whiteColor,
-                          ),
+                      ),
+                      style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all<Color>(
+                          AppColors.brownCoffeeColor,
                         ),
+                      ),
+                      child: CustomText.h4(
+                        AppStringsGeneric.addCart,
+                        color: AppColors.whiteColor,
                       ),
                     ),
                   ),
+
+                  //GestureDetector(
+                  //  onTap: () {
+                  //    addToCart(
+                  //      Product(
+                  //        name: coffee.name,
+                  //        id: coffee.id,
+                  //        value: finalPrice(coffee),
+                  //      ),
+                  //    );
+                  //  },
+                  //  child: ClipRRect(
+                  //    borderRadius:
+                  //        BorderRadius.circular(AppDimens.kDefaultPadding),
+                  //    child: Container(
+                  //      color: AppColors.brownCoffeeColor,
+                  //      height: size.height * 0.08,
+                  //      width: size.width * 0.6,
+                  //      child: Center(
+                  //        child: CustomText.h2(
+                  //          AppStringsGeneric.addCart,
+                  //          color: AppColors.whiteColor,
+                  //        ),
+                  //      ),
+                  //    ),
+                  //  ),
+                  //),
                 ],
               ),
             ),

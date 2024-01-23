@@ -72,15 +72,18 @@ class CustomText {
     );
   }
 
-  static Widget body(String text) {
+  static Widget body(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: AppFonts.inter,
         fontSize: 12,
         fontWeight: FontWeight.w700,
         height: 1,
-        color: AppColors.blackColor,
+        color: color,
       ),
       textAlign: TextAlign.start,
     );
