@@ -1,7 +1,7 @@
 import 'package:coffee_shop/bloc/product_bloc.dart';
-import 'package:coffee_shop/bloc/product_events.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
-import 'package:coffee_shop/model/product.dart';
+import 'package:coffee_shop/constants/components/app_dimension.dart';
+import 'package:coffee_shop/view/components/coffee_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,10 +13,6 @@ class CartView extends StatefulWidget {
 }
 
 class _CartViewState extends State<CartView> {
-  void _removeToCart(Product product) => context.read<ProductBloc>().add(
-        RemoveProductEvent(product: product),
-      );
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,22 +29,20 @@ class _CartViewState extends State<CartView> {
                   );
                 } else if (state is ProductSuccessState) {
                   final productsList = state.products;
-                  return ListView.separated(
-                    itemCount: productsList.length,
-                    itemBuilder: (context, index) => ListTile(
-                      leading: CircleAvatar(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(50),
-                          child: Text(productsList[index].name.substring(0, 1)),
-                        ),
-                      ),
-                      title: Text(productsList[index].name),
-                      trailing: IconButton(
-                        icon: const Icon(Icons.remove),
-                        onPressed: () => _removeToCart(productsList[index]),
+                  return ClipRRect(
+                    borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
+                    child: SizedBox(
+                      height: 200, //size.height * 0.28,
+                      child: ListView.builder(
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: productsList.length,
+                        itemBuilder: (context, index) {
+                          return CoffeeCart(
+                            itemProduct: productsList[index],
+                          );
+                        },
                       ),
                     ),
-                    separatorBuilder: (_, __) => const Divider(),
                   );
                 }
                 return Container();
