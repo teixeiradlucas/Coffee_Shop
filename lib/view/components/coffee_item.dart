@@ -2,6 +2,7 @@ import 'package:coffee_shop/constants/components/app_dimension.dart';
 import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
+import 'package:coffee_shop/view/components/image_coffee.dart';
 import 'package:coffee_shop/view/components/price.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -35,17 +36,10 @@ class CoffeeItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ClipRRect(
-                    borderRadius:
-                        BorderRadius.circular(AppDimens.kDefaultPadding),
-                    child: SizedBox(
-                      height: 115,
-                      width: 130,
-                      child: FittedBox(
-                        fit: BoxFit.fitWidth,
-                        child: Image.asset(itemCoffee.imageAssets),
-                      ),
-                    ),
+                  ImageCoffee(
+                    itemCoffee: itemCoffee,
+                    height: 115,
+                    width: 130,
                   ),
                   gapM,
                   CustomText.body(itemCoffee.name),
