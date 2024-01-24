@@ -1,7 +1,8 @@
 import 'package:coffee_shop/constants/components/app_dimension.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
-import 'package:coffee_shop/view/favorites_view.dart';
-import 'package:coffee_shop/view/home_coffee_view.dart';
+import 'package:coffee_shop/view/cart/cart_view.dart';
+import 'package:coffee_shop/view/favorites/favorites_view.dart';
+import 'package:coffee_shop/view/home/home_coffee_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -31,6 +32,7 @@ class _HomeViewState extends State<HomeView> {
         children: const [
           HomeCoffeeView(),
           FavoritesView(),
+          CartView(),
         ],
       ),
     );
@@ -66,6 +68,7 @@ Padding _bottomNavigation(BuildContext context, PageController pageController) {
           GButton(
             icon: Icons.favorite,
             text: 'Favoritos',
+            //onPressed: () async => GoRouter.of(context).push('/favorites'),
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),
