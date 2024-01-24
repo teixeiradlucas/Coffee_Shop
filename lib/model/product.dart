@@ -1,12 +1,10 @@
+import 'package:coffee_shop/model/coffee.dart';
+
 class Product {
   Product({
-    required this.name,
-    required this.id,
-    required this.value,
+    required this.coffee,
     required this.size,
   });
-  String name;
-  int id;
-  String value;
+  Coffee coffee;
   String size;
 }
