@@ -1,88 +1,101 @@
+import 'package:coffee_shop/bloc/product_bloc.dart';
+import 'package:coffee_shop/bloc/product_events.dart';
 import 'package:coffee_shop/constants/components/app_dimension.dart';
 import 'package:coffee_shop/constants/components/custom_text.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
-import 'package:coffee_shop/model/coffee.dart';
+import 'package:coffee_shop/model/product.dart';
+import 'package:coffee_shop/view/components/image_coffee.dart';
 import 'package:coffee_shop/view/components/price.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class CoffeeCart extends StatelessWidget {
+class CoffeeCart extends StatefulWidget {
   const CoffeeCart({
-    required this.itemCoffee,
+    required this.itemProduct,
     super.key,
   });
 
-  final Coffee itemCoffee;
+  final Product itemProduct;
 
   @override
+  State<CoffeeCart> createState() => _CoffeeCartState();
+}
+
+class _CoffeeCartState extends State<CoffeeCart> {
+  void _removeToCart(Product product) => context.read<ProductBloc>().add(
+        RemoveProductEvent(product: product),
+      );
+  @override
   Widget build(BuildContext context) {
+    final itemCoffee = widget.itemProduct.coffee;
     final realPrice = finalPrice(itemCoffee);
     final discountMessage = textDiscount(itemCoffee);
 
-    return GestureDetector(
-      onTap: () async =>
-          GoRouter.of(context).push('/coffee_view/${itemCoffee.id}'),
-      child: Padding(
-        padding: const EdgeInsets.all(AppDimens.kPaddingM),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
-          child: Container(
-            height: 150,
-            color: AppColors.whiteColor,
-            child: Padding(
-              padding: const EdgeInsets.all(AppDimens.kPadding),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius:
-                        BorderRadius.circular(AppDimens.kDefaultPadding),
-                    child: SizedBox(
-                      height: 145,
-                      width: 130,
-                      child: FittedBox(
-                        fit: BoxFit.fitWidth,
-                        child: Image.asset(itemCoffee.imageAssets),
+    return Padding(
+      padding: const EdgeInsets.all(AppDimens.kPaddingM),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+        child: Container(
+          height: 120,
+          width: MediaQuery.of(context).size.width,
+          color: AppColors.whiteColor,
+          child: Padding(
+            padding: const EdgeInsets.all(AppDimens.kPadding),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                ImageCoffee(
+                  itemCoffee: itemCoffee,
+                  height: 115,
+                  width: 110,
+                ),
+                gap,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      CustomText.h4(itemCoffee.name),
+                      CustomText.h4('Pequeno'),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomText.h4(realPrice),
+                          _amountCoffee(),
+                        ],
                       ),
-                    ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(AppDimens.kPadding),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        CustomText.h4(itemCoffee.name),
-                        CustomText.descrition(itemCoffee.beverageType),
-                        Row(
-                          children: [
-                            CustomText.h2(realPrice),
-                            gapM,
-                            CustomText.sale(discountMessage),
-                            gapM,
-                            CustomText.discount(
-                              valueDiscount(itemCoffee),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            const Icon(
-                              Icons.star,
-                              color: AppColors.yellowColor,
-                              size: 30,
-                            ),
-                            CustomText.h4(
-                              itemCoffee.rating.toString(),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding _amountCoffee() {
+    return Padding(
+      padding: const EdgeInsets.only(bottom: AppDimens.kPadding),
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+        child: ColoredBox(
+          color: AppColors.backgroundColor,
+          child: Row(
+            children: [
+              IconButton(
+                onPressed: () => _removeToCart(widget.itemProduct),
+                icon: const Icon(Icons.remove),
+              ),
+              gapS,
+              CustomText.h4('2'),
+              gapS,
+              IconButton(
+                onPressed: () {},
+                icon: const Icon(Icons.add),
+              ),
+            ],
           ),
         ),
       ),

@@ -282,10 +282,8 @@ class _CoffeeViewState extends State<CoffeeView> {
                     child: ElevatedButton(
                       onPressed: () => addToCart(
                         Product(
-                          name: coffee.name,
-                          id: coffee.id,
-                          value: finalPrice(coffee),
-                          size: 'M',
+                          coffee: coffee,
+                          size: 'P',
                         ),
                       ),
                       style: ButtonStyle(
@@ -299,33 +297,6 @@ class _CoffeeViewState extends State<CoffeeView> {
                       ),
                     ),
                   ),
-
-                  //GestureDetector(
-                  //  onTap: () {
-                  //    addToCart(
-                  //      Product(
-                  //        name: coffee.name,
-                  //        id: coffee.id,
-                  //        value: finalPrice(coffee),
-                  //      ),
-                  //    );
-                  //  },
-                  //  child: ClipRRect(
-                  //    borderRadius:
-                  //        BorderRadius.circular(AppDimens.kDefaultPadding),
-                  //    child: Container(
-                  //      color: AppColors.brownCoffeeColor,
-                  //      height: size.height * 0.08,
-                  //      width: size.width * 0.6,
-                  //      child: Center(
-                  //        child: CustomText.h2(
-                  //          AppStringsGeneric.addCart,
-                  //          color: AppColors.whiteColor,
-                  //        ),
-                  //      ),
-                  //    ),
-                  //  ),
-                  //),
                 ],
               ),
             ),
