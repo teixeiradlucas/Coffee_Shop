@@ -85,14 +85,18 @@ class _CoffeeCartState extends State<CoffeeCart> {
           child: Row(
             children: [
               IconButton(
-                onPressed: () => _removeToCart(widget.itemProduct),
+                onPressed: () {
+                  widget.itemProduct.quantity <= 1
+                      ? _removeToCart(widget.itemProduct)
+                      : setState(() => widget.itemProduct.quantity--);
+                },
                 icon: const Icon(Icons.remove),
               ),
               gapS,
               CustomText.h4(widget.itemProduct.quantity.toString()),
               gapS,
               IconButton(
-                onPressed: () {},
+                onPressed: () => setState(() => widget.itemProduct.quantity++),
                 icon: const Icon(Icons.add),
               ),
             ],
