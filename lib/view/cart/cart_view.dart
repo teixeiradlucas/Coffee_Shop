@@ -32,7 +32,7 @@ class _CartViewState extends State<CartView> {
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
                     child: SizedBox(
-                      height: 200, //size.height * 0.28,
+                      height: 200,
                       child: ListView.builder(
                         physics: const BouncingScrollPhysics(),
                         itemCount: productsList.length,

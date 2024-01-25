@@ -92,7 +92,6 @@ class _CoffeeViewState extends State<CoffeeView> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      // Navigator.pop(context);
                       await GoRouter.of(context).push('/cart');
                     },
                     //TODO:ADICIONAR NUMERO DE ITENS NO CARRINHO
@@ -112,7 +111,6 @@ class _CoffeeViewState extends State<CoffeeView> {
                                 return Container();
                               } else if (state is ProductSuccessState) {
                                 return SizedBox(
-                                  //color: Colors.white,
                                   height: 30,
                                   width: 30,
                                   child: BorderContainer(

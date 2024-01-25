@@ -68,7 +68,6 @@ Padding _bottomNavigation(BuildContext context, PageController pageController) {
           GButton(
             icon: Icons.favorite,
             text: 'Favoritos',
-            //onPressed: () async => GoRouter.of(context).push('/favorites'),
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),
