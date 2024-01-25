@@ -89,7 +89,7 @@ class _CoffeeCartState extends State<CoffeeCart> {
                 icon: const Icon(Icons.remove),
               ),
               gapS,
-              CustomText.h4('2'),
+              CustomText.h4(widget.itemProduct.quantity.toString()),
               gapS,
               IconButton(
                 onPressed: () {},

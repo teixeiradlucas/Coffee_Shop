@@ -12,4 +12,18 @@ class ProductRepository {
     _products.remove(product);
     return _products;
   }
+
+  List<Product> getProducts() {
+    return _products;
+  }
+
+  void updateProduct(Product updatedProduct) {
+    for (var i = 0; i < _products.length; i++) {
+      if (_products[i].coffee.id == updatedProduct.coffee.id &&
+          _products[i].size == updatedProduct.size) {
+        _products[i] = updatedProduct;
+        break;
+      }
+    }
+  }
 }

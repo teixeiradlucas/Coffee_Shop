@@ -6,13 +6,24 @@ import 'package:coffee_shop/repositories/product_repository.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc() : super(ProductInitialState()) {
     on<AddProductEvent>(
-      (event, emit) => emit(
-        ProductSuccessState(
-          products: _productRepo.addProduct(event.product),
-        ),
-      ),
-    );
+      (event, emit) {
+        var productExists = false;
+        for (final product in _productRepo.getProducts()) {
+          if (product.coffee.id == event.product.coffee.id &&
+              product.size == event.product.size) {
+            product.quantity += event.product.quantity;
+            productExists = true;
+            break;
+          }
+        }
 
+        if (!productExists) {
+          _productRepo.addProduct(event.product);
+        }
+
+        emit(ProductSuccessState(products: _productRepo.getProducts()));
+      },
+    );
     on<RemoveProductEvent>(
       (event, emit) => emit(
         ProductSuccessState(
@@ -21,5 +32,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       ),
     );
   }
+
   final _productRepo = ProductRepository();
 }
