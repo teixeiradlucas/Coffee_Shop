@@ -13,3 +13,15 @@ class RemoveProductEvent extends ProductEvent {
 
   Product product;
 }
+
+class IncrementProductQuantityEvent extends ProductEvent {
+  IncrementProductQuantityEvent({required this.product});
+
+  Product product;
+}
+
+class DecrementProductQuantityEvent extends ProductEvent {
+  DecrementProductQuantityEvent({required this.product});
+
+  Product product;
+}

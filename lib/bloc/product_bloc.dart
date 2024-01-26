@@ -24,12 +24,45 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         emit(ProductSuccessState(products: _productRepo.getProducts()));
       },
     );
+
     on<RemoveProductEvent>(
       (event, emit) => emit(
         ProductSuccessState(
           products: _productRepo.removeProduct(event.product),
         ),
       ),
+    );
+
+    on<IncrementProductQuantityEvent>(
+      (event, emit) {
+        for (final product in _productRepo.getProducts()) {
+          if (product.coffee.id == event.product.coffee.id &&
+              product.size == event.product.size) {
+            product.quantity += 1;
+            break;
+          }
+        }
+        emit(ProductSuccessState(products: _productRepo.getProducts()));
+      },
+    );
+
+    on<DecrementProductQuantityEvent>(
+      (event, emit) {
+        for (final product in _productRepo.getProducts()) {
+          if (product.coffee.id == event.product.coffee.id &&
+              product.size == event.product.size) {
+            if (product.quantity > 0) {
+              product.quantity -= 1;
+
+              if (product.quantity <= 0) {
+                add(RemoveProductEvent(product: product));
+              }
+            }
+            break;
+          }
+        }
+        emit(ProductSuccessState(products: _productRepo.getProducts()));
+      },
     );
   }
 

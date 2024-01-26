@@ -22,14 +22,19 @@ class CoffeeCart extends StatefulWidget {
 }
 
 class _CoffeeCartState extends State<CoffeeCart> {
-  void _removeToCart(Product product) => context.read<ProductBloc>().add(
-        RemoveProductEvent(product: product),
+  void _removeProduct(Product product) => context.read<ProductBloc>().add(
+        DecrementProductQuantityEvent(product: product),
       );
+  void _addProduct(Product product) {
+    context.read<ProductBloc>().add(
+          IncrementProductQuantityEvent(product: product),
+        );
+  }
+
   @override
   Widget build(BuildContext context) {
     final itemCoffee = widget.itemProduct.coffee;
     final realPrice = finalPrice(itemCoffee);
-    final discountMessage = textDiscount(itemCoffee);
 
     return Padding(
       padding: const EdgeInsets.all(AppDimens.kPaddingM),
@@ -56,7 +61,7 @@ class _CoffeeCartState extends State<CoffeeCart> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomText.h4(itemCoffee.name),
-                      CustomText.h4('Pequeno'),
+                      CustomText.h4(color: AppColors.redColor, 'Pequeno'),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -85,18 +90,14 @@ class _CoffeeCartState extends State<CoffeeCart> {
           child: Row(
             children: [
               IconButton(
-                onPressed: () {
-                  widget.itemProduct.quantity <= 1
-                      ? _removeToCart(widget.itemProduct)
-                      : setState(() => widget.itemProduct.quantity--);
-                },
+                onPressed: () => _removeProduct(widget.itemProduct),
                 icon: const Icon(Icons.remove),
               ),
               gapS,
               CustomText.h4(widget.itemProduct.quantity.toString()),
               gapS,
               IconButton(
-                onPressed: () => setState(() => widget.itemProduct.quantity++),
+                onPressed: () => _addProduct(widget.itemProduct),
                 icon: const Icon(Icons.add),
               ),
             ],

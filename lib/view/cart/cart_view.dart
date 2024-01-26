@@ -25,7 +25,7 @@ class _CartViewState extends State<CartView> {
               builder: (context, state) {
                 if (state is ProductInitialState) {
                   return const Center(
-                    child: Text('Lista de favoritos esta vazia'),
+                    child: Text('Carrinho está vazio'),
                   );
                 } else if (state is ProductSuccessState) {
                   final productsList = state.products;
