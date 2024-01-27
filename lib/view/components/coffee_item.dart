@@ -36,10 +36,38 @@ class CoffeeItem extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ImageCoffee(
-                    itemCoffee: itemCoffee,
-                    height: 115,
-                    width: 130,
+                  Stack(
+                    children: [
+                      ImageCoffee(
+                        itemCoffee: itemCoffee,
+                        height: 115,
+                        width: 130,
+                      ),
+                      Positioned(
+                        right: 3,
+                        top: 3,
+                        child: ClipRRect(
+                          borderRadius:
+                              BorderRadius.circular(AppDimens.kPaddingM),
+                          child: Container(
+                            width: 50,
+                            color: AppColors.whiteColor,
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.star,
+                                  color: AppColors.yellowColor,
+                                  size: 20,
+                                ),
+                                CustomText.h4(
+                                  itemCoffee.rating.toString(),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   gapM,
                   CustomText.body(itemCoffee.name),
