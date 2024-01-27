@@ -6,11 +6,6 @@ const gapM = SizedBox.square(dimension: AppDimens.kPaddingM);
 const gapXL = SizedBox.square(dimension: AppDimens.kPaddingXL);
 
 class AppDimens {
-  static const double kMaxWidth = 800;
-  static const BoxConstraints kBoxConstraints =
-      BoxConstraints(maxWidth: kMaxWidth);
-
-  // Padding
   static const double kPaddingXS = 2;
   static const double kPaddingS = 4;
   static const double kPadding = 6;
