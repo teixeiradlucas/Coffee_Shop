@@ -61,7 +61,10 @@ class _CoffeeCartState extends State<CoffeeCart> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       CustomText.h4(itemCoffee.name),
-                      CustomText.h4(color: AppColors.redColor, 'Pequeno'),
+                      CustomText.h4(
+                        color: AppColors.redColor,
+                        widget.itemProduct.size,
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

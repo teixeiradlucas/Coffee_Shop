@@ -10,7 +10,6 @@ import 'package:coffee_shop/model/product.dart';
 import 'package:coffee_shop/repositories/coffee_repository.dart';
 import 'package:coffee_shop/view/components/border_container.dart';
 import 'package:coffee_shop/view/components/price.dart';
-import 'package:coffee_shop/view/components/size_coffee.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,6 +28,8 @@ class CoffeeView extends StatefulWidget {
 }
 
 class _CoffeeViewState extends State<CoffeeView> {
+  String _selectedSize = AppStringsGeneric.medium;
+  double _valueSize = 1;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -236,21 +237,14 @@ class _CoffeeViewState extends State<CoffeeView> {
     //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.all(AppDimens.kDefaultPadding),
+        Padding(
+          padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizeCoffee(
-                color: AppColors.beigeColor,
-                text: AppStringsGeneric.small,
-              ),
-              SizeCoffee(
-                text: AppStringsGeneric.medium,
-              ),
-              SizeCoffee(
-                text: AppStringsGeneric.big,
-              ),
+              _buildButton(AppStringsGeneric.small, 0.8),
+              _buildButton(AppStringsGeneric.medium, 1),
+              _buildButton(AppStringsGeneric.big, 1.2),
             ],
           ),
         ),
@@ -270,8 +264,14 @@ class _CoffeeViewState extends State<CoffeeView> {
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomText.h1(finalPrice(coffee)),
-                      CustomText.discount(formattedPrice(coffee.price)),
+                      CustomText.h1(
+                        formattedPrice(
+                          finalDiscount(coffee) * _valueSize,
+                        ),
+                      ),
+                      CustomText.discount(
+                        formattedPrice(coffee.price * _valueSize),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -280,8 +280,19 @@ class _CoffeeViewState extends State<CoffeeView> {
                     child: ElevatedButton(
                       onPressed: () => addToCart(
                         Product(
-                          coffee: coffee,
-                          size: 'P',
+                          coffee: Coffee(
+                            id: coffee.id,
+                            name: coffee.name,
+                            intensity: coffee.intensity,
+                            beverageType: coffee.beverageType,
+                            price: coffee.price * _valueSize,
+                            isAtive: coffee.isAtive,
+                            bestSellers: coffee.bestSellers,
+                            imageAssets: coffee.imageAssets,
+                            description: coffee.description,
+                            rating: coffee.rating,
+                          ),
+                          size: _selectedSize,
                         ),
                       ),
                       style: ButtonStyle(
@@ -301,6 +312,28 @@ class _CoffeeViewState extends State<CoffeeView> {
           ),
         ),
       ],
+    );
+  }
+
+  ElevatedButton _buildButton(String size, double valueSize) {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          _selectedSize = size;
+          _valueSize = valueSize;
+        });
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _selectedSize == size
+            ? AppColors.whiteColor
+            : AppColors.brownCoffeeColor,
+      ),
+      child: CustomText.body(
+        size,
+        color: _selectedSize == size
+            ? AppColors.brownCoffeeColor
+            : AppColors.whiteColor,
+      ),
     );
   }
 }
