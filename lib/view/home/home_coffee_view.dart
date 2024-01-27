@@ -19,16 +19,13 @@ class HomeCoffeeView extends StatelessWidget {
         centerTitle: true,
         title: CustomText.h1(AppStringsGeneric.appName),
       ),
-      body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _news(context),
-            _bestSellers(context, activeCoffees),
-            CategoryCoffee(activeCoffees: activeCoffees),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _news(context),
+          _bestSellers(context, activeCoffees),
+          CategoryCoffee(activeCoffees: activeCoffees),
+        ],
       ),
     );
   }

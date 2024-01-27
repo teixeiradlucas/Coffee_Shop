@@ -17,30 +17,30 @@ class CategoryCoffee extends StatelessWidget {
     final size = MediaQuery.of(context).size;
     return DefaultTabController(
       length: 4,
-      child: Column(
-        children: [
-          TabBar(
-            onTap: (selectedTabIndex) {},
-            tabs: [
-              Tab(child: CustomText.body2('Espresso')),
-              Tab(child: CustomText.body2('Cappuccino')),
-              Tab(child: CustomText.body2('Latte')),
-              Tab(child: CustomText.body2('Mocha')),
-            ],
-          ),
-          SizedBox(
-            height: size.height * 0.28,
-            width: size.width,
-            child: TabBarView(
-              children: [
-                _listCoffee(size, 'Espresso'),
-                _listCoffee(size, 'Cappuccino'),
-                _listCoffee(size, 'Latte'),
-                _listCoffee(size, 'Mocha'),
+      child: Expanded(
+        child: Column(
+          children: [
+            TabBar(
+              onTap: (selectedTabIndex) {},
+              tabs: [
+                Tab(child: CustomText.body2('Espresso')),
+                Tab(child: CustomText.body2('Cappuccino')),
+                Tab(child: CustomText.body2('Latte')),
+                Tab(child: CustomText.body2('Mocha')),
               ],
             ),
-          ),
-        ],
+            Expanded(
+              child: TabBarView(
+                children: [
+                  _listCoffee(size, 'Espresso'),
+                  _listCoffee(size, 'Cappuccino'),
+                  _listCoffee(size, 'Latte'),
+                  _listCoffee(size, 'Mocha'),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -50,16 +50,13 @@ class CategoryCoffee extends StatelessWidget {
         activeCoffees.where((coffee) => coffee.beverageType == type).toList();
     return ClipRRect(
       borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
-      child: SizedBox(
-        height: size.height * 0.28,
-        child: ListView.builder(
-          physics: const BouncingScrollPhysics(),
-          itemCount: typeCoffee.length,
-          itemBuilder: (context, index) {
-            final coffee = typeCoffee[index];
-            return CoffeeItemType(itemCoffee: coffee);
-          },
-        ),
+      child: ListView.builder(
+        physics: const BouncingScrollPhysics(),
+        itemCount: typeCoffee.length,
+        itemBuilder: (context, index) {
+          final coffee = typeCoffee[index];
+          return CoffeeItemType(itemCoffee: coffee);
+        },
       ),
     );
   }
