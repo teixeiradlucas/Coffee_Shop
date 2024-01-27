@@ -16,7 +16,8 @@ class HomeCoffeeView extends StatelessWidget {
     final activeCoffees = coffees.where((coffee) => coffee.isAtive).toList();
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: CustomText.h1(AppStringsGeneric.appName)),
+        centerTitle: true,
+        title: CustomText.h1(AppStringsGeneric.appName),
       ),
       body: SingleChildScrollView(
         physics: const NeverScrollableScrollPhysics(),

@@ -89,30 +89,36 @@ class CustomText {
     );
   }
 
-  static Widget body2(String text) {
+  static Widget body2(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: AppFonts.inter,
         fontSize: 10,
         fontWeight: FontWeight.w700,
         height: 1,
-        color: AppColors.blackColor,
+        color: color,
       ),
       textAlign: TextAlign.start,
       maxLines: 1,
     );
   }
 
-  static Widget body3(String text) {
+  static Widget body3(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: AppFonts.inter,
         fontSize: 20,
         fontWeight: FontWeight.w700,
         height: 1,
-        color: AppColors.blackColor,
+        color: color,
       ),
       textAlign: TextAlign.start,
     );

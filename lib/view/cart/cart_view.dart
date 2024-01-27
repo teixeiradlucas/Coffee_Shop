@@ -1,7 +1,10 @@
 import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
 import 'package:coffee_shop/constants/components/app_dimension.dart';
+import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/view/components/coffee_cart.dart';
+import 'package:coffee_shop/view/components/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -15,42 +18,121 @@ class CartView extends StatefulWidget {
 class _CartViewState extends State<CartView> {
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: AppBar(title: const Text('Carrinho')),
+      appBar: AppBar(
+        centerTitle: true,
+        title: CustomText.h1('CARRINHO'),
+      ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          SizedBox(
-            height: 500,
-            child: BlocBuilder<ProductBloc, ProductState>(
-              builder: (context, state) {
-                if (state is ProductInitialState) {
-                  return const Center(
-                    child: Text('Carrinho está vazio'),
-                  );
-                } else if (state is ProductSuccessState) {
-                  final productsList = state.products;
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
-                    child: SizedBox(
-                      height: 200,
-                      child: ListView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        itemCount: productsList.length,
-                        itemBuilder: (context, index) {
-                          return CoffeeCart(
-                            itemProduct: productsList[index],
-                          );
-                        },
-                      ),
-                    ),
-                  );
-                }
-                return Container();
-              },
-            ),
-          ),
+          _itemCart(),
+          _payment(size),
         ],
       ),
     );
   }
+
+  Expanded _itemCart() {
+    return Expanded(
+      child: BlocBuilder<ProductBloc, ProductState>(
+        builder: (context, state) {
+          final productsList = state.products;
+          if (state is ProductSuccessState && productsList.isNotEmpty) {
+            return ClipRRect(
+              borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
+              child: SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  itemCount: productsList.length,
+                  itemBuilder: (context, index) {
+                    return CoffeeCart(
+                      itemProduct: productsList[index],
+                    );
+                  },
+                ),
+              ),
+            );
+          }
+          return Center(
+            child: CustomText.h2('Carrinho está vazio'),
+          );
+        },
+      ),
+    );
+  }
+}
+
+ClipRRect _payment(Size size) {
+  return ClipRRect(
+    borderRadius: const BorderRadius.only(
+      topLeft: Radius.circular(AppDimens.kPaddingXL),
+      topRight: Radius.circular(AppDimens.kPaddingXL),
+    ),
+    child: BlocBuilder<ProductBloc, ProductState>(
+      builder: (context, state) {
+        return Container(
+          height: 160,
+          color: AppColors.whiteColor,
+          child: Padding(
+            padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _valueRow(
+                  'Subtotal',
+                  formattedPrice(
+                    valueProduct(state.products),
+                  ),
+                ),
+                _valueRow(
+                  'Desconto',
+                  formattedPrice(
+                    valueProductDiscont(state.products),
+                  ),
+                ),
+                _valueRow(
+                  'Valor final',
+                  formattedPrice(
+                    valueProductFinal(state.products),
+                  ),
+                ),
+                SizedBox(
+                  height: 50,
+                  width: size.width * 0.8,
+                  child: ElevatedButton(
+                    onPressed: () {},
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        AppColors.brownCoffeeColor,
+                      ),
+                    ),
+                    child: CustomText.body(
+                      'FINALIZAR PEDIDO',
+                      color: AppColors.whiteColor,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+    ),
+  );
+}
+
+Row _valueRow(String valueType, String value) {
+  return Row(
+    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+      CustomText.body3(valueType),
+      if (valueType == 'Desconto')
+        CustomText.body3('- $value', color: AppColors.greenColor)
+      else
+        CustomText.body3(value),
+    ],
+  );
 }

@@ -1,4 +1,5 @@
 import 'package:coffee_shop/model/coffee.dart';
+import 'package:coffee_shop/model/product.dart';
 
 String finalPrice(Coffee coffee) {
   final valorPrice = formattedPrice(finalDiscount(coffee));
@@ -48,4 +49,35 @@ String valueDiscount(Coffee coffee) {
     valueString = '';
   }
   return valueString;
+}
+
+double valueProduct(List<Product> products) {
+  var value = 0.0;
+  for (final product in products) {
+    value += product.quantity * product.coffee.price;
+  }
+
+  return value;
+}
+
+double valueProductDiscont(List<Product> products) {
+  var discountTotal = 0.0;
+
+  for (final product in products) {
+    final productTotal = product.quantity * product.coffee.price;
+
+    if (product.coffee.beverageType == 'Espresso') {
+      discountTotal += productTotal * 0.20;
+    } else if (product.coffee.beverageType == 'Cappuccino') {
+      discountTotal += productTotal * 0.12;
+    }
+  }
+
+  return discountTotal;
+}
+
+double valueProductFinal(List<Product> products) {
+  final valueFinal = valueProduct(products) - valueProductDiscont(products);
+
+  return valueFinal;
 }
