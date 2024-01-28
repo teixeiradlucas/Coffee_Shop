@@ -1,7 +1,7 @@
 import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/view/components/coffee_cart.dart';
@@ -23,7 +23,7 @@ class _CartViewState extends State<CartView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: CustomText.h1(StringsGeneric.titleCart),
+        title: TextCustom.h1(StringsGeneric.titleCart),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -42,7 +42,7 @@ class _CartViewState extends State<CartView> {
           final productsList = state.products;
           if (state is ProductSuccessState && productsList.isNotEmpty) {
             return ClipRRect(
-              borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
+              borderRadius: BorderRadius.circular(kPaddingXL),
               child: SizedBox(
                 height: 200,
                 child: ListView.builder(
@@ -58,7 +58,7 @@ class _CartViewState extends State<CartView> {
             );
           }
           return Center(
-            child: CustomText.h2(StringsGeneric.emptyCart),
+            child: TextCustom.h2(StringsGeneric.emptyCart),
           );
         },
       ),
@@ -69,8 +69,8 @@ class _CartViewState extends State<CartView> {
 ClipRRect _payment(Size size) {
   return ClipRRect(
     borderRadius: const BorderRadius.only(
-      topLeft: Radius.circular(AppDimens.kPaddingXL),
-      topRight: Radius.circular(AppDimens.kPaddingXL),
+      topLeft: Radius.circular(kPaddingXL),
+      topRight: Radius.circular(kPaddingXL),
     ),
     child: BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
@@ -78,7 +78,7 @@ ClipRRect _payment(Size size) {
           height: 160,
           color: AppColors.whiteColor,
           child: Padding(
-            padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
+            padding: const EdgeInsets.all(kDefaultPadding),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -110,7 +110,7 @@ ClipRRect _payment(Size size) {
                         AppColors.brownCoffeeColor,
                       ),
                     ),
-                    child: CustomText.body(
+                    child: TextCustom.body(
                       StringsGeneric.finalizeOrder,
                       color: AppColors.whiteColor,
                     ),
@@ -129,11 +129,11 @@ Row _valueRow(String valueType, String value) {
   return Row(
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
-      CustomText.body3(valueType),
+      TextCustom.body3(valueType),
       if (valueType == StringsGeneric.discount)
-        CustomText.body3('- $value', color: AppColors.greenColor)
+        TextCustom.body3('- $value', color: AppColors.greenColor)
       else
-        CustomText.body3(value),
+        TextCustom.body3(value),
     ],
   );
 }

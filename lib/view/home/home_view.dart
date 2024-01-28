@@ -1,4 +1,4 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/view/cart/cart_view.dart';
 import 'package:coffee_shop/view/favorites/favorites_view.dart';
@@ -41,15 +41,15 @@ class _HomeViewState extends State<HomeView> {
 
 Padding _bottomNavigation(BuildContext context, PageController pageController) {
   return Padding(
-    padding: const EdgeInsets.all(AppDimens.kPaddingS),
+    padding: const EdgeInsets.all(kPaddingS),
     child: ClipRRect(
       borderRadius: const BorderRadius.all(
-        Radius.circular(AppDimens.kPaddingXL),
+        Radius.circular(kPaddingXL),
       ),
       child: GNav(
         backgroundColor: AppColors.whiteColor,
         tabBackgroundColor: AppColors.brownCoffeeColor,
-        padding: const EdgeInsets.all(AppDimens.kPadding * 2),
+        padding: const EdgeInsets.all(kPadding * 2),
         onTabChange: (index) async {
           await pageController.animateToPage(
             index,

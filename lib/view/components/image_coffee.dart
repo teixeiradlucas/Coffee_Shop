@@ -1,4 +1,4 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/model/coffee.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +17,7 @@ class ImageCoffee extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
-      borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+      borderRadius: BorderRadius.circular(kDefaultPadding),
       child: SizedBox(
         height: height,
         width: width,

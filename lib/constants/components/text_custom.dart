@@ -2,7 +2,7 @@ import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/constants/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
-class CustomText {
+class TextCustom {
   static Widget h1(
     String text, {
     Color color = AppColors.blackColor,

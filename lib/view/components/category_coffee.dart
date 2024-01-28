@@ -1,5 +1,5 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/model/coffee.dart';
 import 'package:coffee_shop/view/components/coffe_item_type.dart';
@@ -23,10 +23,10 @@ class CategoryCoffee extends StatelessWidget {
             TabBar(
               onTap: (selectedTabIndex) {},
               tabs: [
-                Tab(child: CustomText.body2(StringsGeneric.espresso)),
-                Tab(child: CustomText.body2(StringsGeneric.cappuccino)),
-                Tab(child: CustomText.body2(StringsGeneric.latte)),
-                Tab(child: CustomText.body2(StringsGeneric.medium)),
+                Tab(child: TextCustom.body2(StringsGeneric.espresso)),
+                Tab(child: TextCustom.body2(StringsGeneric.cappuccino)),
+                Tab(child: TextCustom.body2(StringsGeneric.latte)),
+                Tab(child: TextCustom.body2(StringsGeneric.medium)),
               ],
             ),
             Expanded(
@@ -49,7 +49,7 @@ class CategoryCoffee extends StatelessWidget {
     final typeCoffee =
         activeCoffees.where((coffee) => coffee.beverageType == type).toList();
     return ClipRRect(
-      borderRadius: BorderRadius.circular(AppDimens.kPaddingXL),
+      borderRadius: BorderRadius.circular(kPaddingXL),
       child: ListView.builder(
         physics: const BouncingScrollPhysics(),
         itemCount: typeCoffee.length,

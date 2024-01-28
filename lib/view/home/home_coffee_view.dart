@@ -1,5 +1,5 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
@@ -17,7 +17,7 @@ class HomeCoffeeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: CustomText.h1(StringsGeneric.appName),
+        title: TextCustom.h1(StringsGeneric.appName),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -35,7 +35,7 @@ class HomeCoffeeView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.brownCoffeeColor,
-        borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+        borderRadius: BorderRadius.circular(kDefaultPadding),
       ),
       height: size.height * 0.18,
       width: size.width - 20,
@@ -47,7 +47,7 @@ class HomeCoffeeView extends StatelessWidget {
             child: SizedBox(
               height: 120,
               width: size.width * 0.65,
-              child: CustomText.h2(
+              child: TextCustom.h2(
                 StringsGeneric.phrase,
                 color: AppColors.whiteColor,
               ),
@@ -61,10 +61,10 @@ class HomeCoffeeView extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                 color: AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(AppDimens.kPaddingM),
+                borderRadius: BorderRadius.circular(kPaddingM),
               ),
               child: Center(
-                child: CustomText.body3(
+                child: TextCustom.body3(
                   StringsGeneric.offdiscount,
                 ),
               ),
@@ -97,7 +97,7 @@ Column _bestSellers(
   return Column(
     children: [
       gap,
-      CustomText.body3(StringsGeneric.bestSellers),
+      TextCustom.body3(StringsGeneric.bestSellers),
       gapM,
       SizedBox(
         height: size.height * 0.27,

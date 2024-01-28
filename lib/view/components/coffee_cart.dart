@@ -1,7 +1,7 @@
 import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_events.dart';
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/product.dart';
 import 'package:coffee_shop/view/components/image_coffee.dart';
@@ -37,15 +37,15 @@ class _CoffeeCartState extends State<CoffeeCart> {
     final realPrice = finalPrice(itemCoffee);
 
     return Padding(
-      padding: const EdgeInsets.all(AppDimens.kPaddingM),
+      padding: const EdgeInsets.all(kPaddingM),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+        borderRadius: BorderRadius.circular(kDefaultPadding),
         child: Container(
           height: 120,
           width: MediaQuery.of(context).size.width,
           color: AppColors.whiteColor,
           child: Padding(
-            padding: const EdgeInsets.all(AppDimens.kPadding),
+            padding: const EdgeInsets.all(kPadding),
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -60,15 +60,15 @@ class _CoffeeCartState extends State<CoffeeCart> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      CustomText.h4(itemCoffee.name),
-                      CustomText.h4(
+                      TextCustom.h4(itemCoffee.name),
+                      TextCustom.h4(
                         color: AppColors.redColor,
                         widget.itemProduct.size,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          CustomText.h4(realPrice),
+                          TextCustom.h4(realPrice),
                           _amountCoffee(),
                         ],
                       ),
@@ -85,9 +85,9 @@ class _CoffeeCartState extends State<CoffeeCart> {
 
   Padding _amountCoffee() {
     return Padding(
-      padding: const EdgeInsets.only(bottom: AppDimens.kPadding),
+      padding: const EdgeInsets.only(bottom: kPadding),
       child: ClipRRect(
-        borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+        borderRadius: BorderRadius.circular(kDefaultPadding),
         child: ColoredBox(
           color: AppColors.backgroundColor,
           child: Row(
@@ -97,7 +97,7 @@ class _CoffeeCartState extends State<CoffeeCart> {
                 icon: const Icon(Icons.remove),
               ),
               gapS,
-              CustomText.h4(widget.itemProduct.quantity.toString()),
+              TextCustom.h4(widget.itemProduct.quantity.toString()),
               gapS,
               IconButton(
                 onPressed: () => _addProduct(widget.itemProduct),

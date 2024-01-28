@@ -1,5 +1,5 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
 import 'package:coffee_shop/view/components/image_coffee.dart';
@@ -24,15 +24,15 @@ class CoffeeItem extends StatelessWidget {
       onTap: () async =>
           GoRouter.of(context).push('/coffee_view/${itemCoffee.id}'),
       child: Padding(
-        padding: const EdgeInsets.all(AppDimens.kPaddingM),
+        padding: const EdgeInsets.all(kPaddingM),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+          borderRadius: BorderRadius.circular(kDefaultPadding),
           child: Container(
             height: 200,
             width: 130,
             color: AppColors.whiteColor,
             child: Padding(
-              padding: const EdgeInsets.all(AppDimens.kPadding),
+              padding: const EdgeInsets.all(kPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -47,8 +47,7 @@ class CoffeeItem extends StatelessWidget {
                         right: 3,
                         top: 3,
                         child: ClipRRect(
-                          borderRadius:
-                              BorderRadius.circular(AppDimens.kPaddingM),
+                          borderRadius: BorderRadius.circular(kPaddingM),
                           child: Container(
                             width: 50,
                             color: AppColors.whiteColor,
@@ -59,7 +58,7 @@ class CoffeeItem extends StatelessWidget {
                                   color: AppColors.yellowColor,
                                   size: 20,
                                 ),
-                                CustomText.h4(
+                                TextCustom.h4(
                                   itemCoffee.rating.toString(),
                                 ),
                               ],
@@ -70,15 +69,15 @@ class CoffeeItem extends StatelessWidget {
                     ],
                   ),
                   gapM,
-                  CustomText.body(itemCoffee.name),
+                  TextCustom.body(itemCoffee.name),
                   gapS,
-                  CustomText.descrition(itemCoffee.beverageType),
+                  TextCustom.descrition(itemCoffee.beverageType),
                   gapM,
                   Row(
                     children: [
-                      CustomText.body(realPrice),
+                      TextCustom.body(realPrice),
                       gapM,
-                      CustomText.sale(discountMessage),
+                      TextCustom.sale(discountMessage),
                     ],
                   ),
                 ],

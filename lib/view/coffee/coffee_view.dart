@@ -1,8 +1,8 @@
 import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_events.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
@@ -63,8 +63,8 @@ class _CoffeeViewState extends State<CoffeeView> {
             top: 0,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(AppDimens.kPaddingXL),
-                bottomRight: Radius.circular(AppDimens.kPaddingXL),
+                bottomLeft: Radius.circular(kPaddingXL),
+                bottomRight: Radius.circular(kPaddingXL),
               ),
               child: SizedBox(
                 height: size.height * 0.60,
@@ -77,7 +77,7 @@ class _CoffeeViewState extends State<CoffeeView> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(AppDimens.kPadding),
+            padding: const EdgeInsets.all(kPadding),
             child: SafeArea(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -115,7 +115,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                                   height: 30,
                                   width: 30,
                                   child: BorderContainer(
-                                    child: CustomText.body(
+                                    child: TextCustom.body(
                                       color: AppColors.whiteColor,
                                       state.products.length.toString(),
                                     ),
@@ -140,20 +140,20 @@ class _CoffeeViewState extends State<CoffeeView> {
             left: 10,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(
-                AppDimens.kPaddingXL,
+                kPaddingXL,
               ),
               child: Container(
                 height: 160,
                 color: AppColors.blackColor.withOpacity(0.5),
                 child: Padding(
-                  padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
+                  padding: const EdgeInsets.all(kDefaultPadding),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Row(
                         children: [
-                          Expanded(child: CustomText.h3(itemCoffees.name)),
+                          Expanded(child: TextCustom.h3(itemCoffees.name)),
                           IconButton(
                             onPressed: () {},
                             //TODO:IMPLEMENTAR FAVORITOS E ANIMAÇÃO
@@ -165,7 +165,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                           ),
                         ],
                       ),
-                      CustomText.h2(
+                      TextCustom.h2(
                         itemCoffees.beverageType,
                         color: AppColors.grayColor,
                       ),
@@ -177,7 +177,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                             size: 30,
                           ),
                           Expanded(
-                            child: CustomText.h3(
+                            child: TextCustom.h3(
                               itemCoffees.rating.toString(),
                             ),
                           ),
@@ -193,7 +193,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                           BorderContainer(
                             size: 40,
                             color: AppColors.whiteColor,
-                            child: CustomText.h1(
+                            child: TextCustom.h1(
                               intensity.toString(),
                               color: intensity >= 7
                                   ? AppColors.redColor
@@ -216,14 +216,14 @@ class _CoffeeViewState extends State<CoffeeView> {
   Padding _descrition(Coffee itemCoffees) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: AppDimens.kPaddingXL,
-        right: AppDimens.kPaddingXL,
+        left: kPaddingXL,
+        right: kPaddingXL,
       ),
       child: Column(
         children: [
-          CustomText.h1(StringsGeneric.descrition),
+          TextCustom.h1(StringsGeneric.descrition),
           gap,
-          CustomText.body(itemCoffees.description),
+          TextCustom.body(itemCoffees.description),
         ],
       ),
     );
@@ -238,7 +238,7 @@ class _CoffeeViewState extends State<CoffeeView> {
     return Column(
       children: [
         Padding(
-          padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
+          padding: const EdgeInsets.all(kDefaultPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -250,26 +250,26 @@ class _CoffeeViewState extends State<CoffeeView> {
         ),
         ClipRRect(
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(AppDimens.kPaddingXL),
-            topRight: Radius.circular(AppDimens.kPaddingXL),
+            topLeft: Radius.circular(kPaddingXL),
+            topRight: Radius.circular(kPaddingXL),
           ),
           child: Container(
             height: size.height * 0.15,
             color: AppColors.whiteColor,
             child: Padding(
-              padding: const EdgeInsets.all(AppDimens.kPaddingM),
+              padding: const EdgeInsets.all(kPaddingM),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomText.h1(
+                      TextCustom.h1(
                         formattedPrice(
                           finalDiscount(coffee) * _valueSize,
                         ),
                       ),
-                      CustomText.discount(
+                      TextCustom.discount(
                         formattedPrice(coffee.price * _valueSize),
                       ),
                     ],
@@ -300,7 +300,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                           AppColors.brownCoffeeColor,
                         ),
                       ),
-                      child: CustomText.h4(
+                      child: TextCustom.h4(
                         StringsGeneric.addCart,
                         color: AppColors.whiteColor,
                       ),
@@ -328,7 +328,7 @@ class _CoffeeViewState extends State<CoffeeView> {
             ? AppColors.whiteColor
             : AppColors.brownCoffeeColor,
       ),
-      child: CustomText.body(
+      child: TextCustom.body(
         size,
         color: _selectedSize == size
             ? AppColors.brownCoffeeColor
