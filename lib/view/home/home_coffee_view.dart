@@ -17,7 +17,7 @@ class HomeCoffeeView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: CustomText.h1(AppStringsGeneric.appName),
+        title: CustomText.h1(StringsGeneric.appName),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -48,7 +48,7 @@ class HomeCoffeeView extends StatelessWidget {
               height: 120,
               width: size.width * 0.65,
               child: CustomText.h2(
-                'Espresso irresistível, momentos inesquecíveis.',
+                StringsGeneric.phrase,
                 color: AppColors.whiteColor,
               ),
             ),
@@ -63,7 +63,11 @@ class HomeCoffeeView extends StatelessWidget {
                 color: AppColors.whiteColor,
                 borderRadius: BorderRadius.circular(AppDimens.kPaddingM),
               ),
-              child: Center(child: CustomText.body3('ATÉ 20% OFF')),
+              child: Center(
+                child: CustomText.body3(
+                  StringsGeneric.offdiscount,
+                ),
+              ),
             ),
           ),
           Positioned(
@@ -93,7 +97,7 @@ Column _bestSellers(
   return Column(
     children: [
       gap,
-      CustomText.body3(AppStringsGeneric.bestSellers),
+      CustomText.body3(StringsGeneric.bestSellers),
       gapM,
       SizedBox(
         height: size.height * 0.27,

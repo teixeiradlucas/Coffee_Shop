@@ -2,6 +2,7 @@ import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
 import 'package:coffee_shop/constants/components/app_dimension.dart';
 import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/view/components/coffee_cart.dart';
 import 'package:coffee_shop/view/components/price.dart';
@@ -22,7 +23,7 @@ class _CartViewState extends State<CartView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: CustomText.h1('CARRINHO'),
+        title: CustomText.h1(StringsGeneric.titleCart),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -57,7 +58,7 @@ class _CartViewState extends State<CartView> {
             );
           }
           return Center(
-            child: CustomText.h2('Carrinho está vazio'),
+            child: CustomText.h2(StringsGeneric.emptyCart),
           );
         },
       ),
@@ -82,19 +83,19 @@ ClipRRect _payment(Size size) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _valueRow(
-                  'Subtotal',
+                  StringsGeneric.subTotal,
                   formattedPrice(
                     valueProduct(state.products),
                   ),
                 ),
                 _valueRow(
-                  'Desconto',
+                  StringsGeneric.discount,
                   formattedPrice(
                     valueProductDiscont(state.products),
                   ),
                 ),
                 _valueRow(
-                  'Valor final',
+                  StringsGeneric.valueFinal,
                   formattedPrice(
                     valueProductFinal(state.products),
                   ),
@@ -110,7 +111,7 @@ ClipRRect _payment(Size size) {
                       ),
                     ),
                     child: CustomText.body(
-                      'FINALIZAR PEDIDO',
+                      StringsGeneric.finalizeOrder,
                       color: AppColors.whiteColor,
                     ),
                   ),
@@ -129,7 +130,7 @@ Row _valueRow(String valueType, String value) {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       CustomText.body3(valueType),
-      if (valueType == 'Desconto')
+      if (valueType == StringsGeneric.discount)
         CustomText.body3('- $value', color: AppColors.greenColor)
       else
         CustomText.body3(value),

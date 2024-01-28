@@ -28,7 +28,7 @@ class CoffeeView extends StatefulWidget {
 }
 
 class _CoffeeViewState extends State<CoffeeView> {
-  String _selectedSize = AppStringsGeneric.medium;
+  String _selectedSize = StringsGeneric.medium;
   double _valueSize = 1;
   @override
   Widget build(BuildContext context) {
@@ -221,7 +221,7 @@ class _CoffeeViewState extends State<CoffeeView> {
       ),
       child: Column(
         children: [
-          CustomText.h1(AppStringsGeneric.descrition),
+          CustomText.h1(StringsGeneric.descrition),
           gap,
           CustomText.body(itemCoffees.description),
         ],
@@ -234,7 +234,7 @@ class _CoffeeViewState extends State<CoffeeView> {
       context.read<ProductBloc>().add(AddProductEvent(product: product));
     }
 
-    //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO
+    //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO.
     return Column(
       children: [
         Padding(
@@ -242,9 +242,9 @@ class _CoffeeViewState extends State<CoffeeView> {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              _buildButton(AppStringsGeneric.small, 0.8),
-              _buildButton(AppStringsGeneric.medium, 1),
-              _buildButton(AppStringsGeneric.big, 1.2),
+              _buildButton(StringsGeneric.small, 0.8),
+              _buildButton(StringsGeneric.medium, 1),
+              _buildButton(StringsGeneric.big, 1.2),
             ],
           ),
         ),
@@ -301,7 +301,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                         ),
                       ),
                       child: CustomText.h4(
-                        AppStringsGeneric.addCart,
+                        StringsGeneric.addCart,
                         color: AppColors.whiteColor,
                       ),
                     ),

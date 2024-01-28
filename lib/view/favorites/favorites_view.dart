@@ -7,7 +7,7 @@ class FavoritesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(AppStringsGeneric.favorites)),
+      appBar: AppBar(title: const Text(StringsGeneric.favorites)),
       body: const SizedBox(),
     );
   }
