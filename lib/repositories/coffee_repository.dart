@@ -9,7 +9,7 @@ List<Coffee> coffees = [
     intensity: 7,
     beverageType: 'Espresso',
     price: 3.75,
-    isAtive: true,
+    isActive: true,
     bestSellers: true,
     imageAssets: 'assets/images/espresso3.jpg',
     description:
@@ -22,7 +22,7 @@ List<Coffee> coffees = [
     intensity: 3,
     beverageType: 'Cappuccino',
     price: 5.50,
-    isAtive: true,
+    isActive: true,
     bestSellers: true,
     imageAssets: 'assets/images/cappuccino1.jpg',
     description:
@@ -35,7 +35,7 @@ List<Coffee> coffees = [
     intensity: 9,
     beverageType: 'Espresso',
     price: 3.50,
-    isAtive: true,
+    isActive: true,
     bestSellers: true,
     imageAssets: 'assets/images/espresso1.jpg',
     description:
@@ -48,7 +48,7 @@ List<Coffee> coffees = [
     intensity: 4,
     beverageType: 'Cappuccino',
     price: 6.20,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/cappuccino4.jpg',
     description:
@@ -61,7 +61,7 @@ List<Coffee> coffees = [
     intensity: 7,
     beverageType: 'Espresso',
     price: 4.1,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/espresso2.jpg',
     description:
@@ -74,7 +74,7 @@ List<Coffee> coffees = [
     intensity: 4,
     beverageType: 'Mocha',
     price: 4.60,
-    isAtive: true,
+    isActive: true,
     bestSellers: true,
     imageAssets: 'assets/images/mocha3.jpg',
     description:
@@ -87,7 +87,7 @@ List<Coffee> coffees = [
     intensity: 3,
     beverageType: 'Cappuccino',
     price: 5.75,
-    isAtive: true,
+    isActive: true,
     bestSellers: true,
     imageAssets: 'assets/images/cappuccino3.jpg',
     description:
@@ -100,7 +100,7 @@ List<Coffee> coffees = [
     intensity: 6,
     beverageType: 'Espresso',
     price: 3.90,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/espresso4.jpg',
     description:
@@ -113,7 +113,7 @@ List<Coffee> coffees = [
     intensity: 3,
     beverageType: 'Cappuccino',
     price: 5.90,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/cappuccino5.jpg',
     description:
@@ -126,7 +126,7 @@ List<Coffee> coffees = [
     intensity: 3,
     beverageType: 'Latte',
     price: 6,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/latte1.jpg',
     description:
@@ -139,7 +139,7 @@ List<Coffee> coffees = [
     intensity: 3,
     beverageType: 'Latte',
     price: 6.25,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/latte2.jpg',
     description:
@@ -152,7 +152,7 @@ List<Coffee> coffees = [
     intensity: 2,
     beverageType: 'Latte',
     price: 5.75,
-    isAtive: true,
+    isActive: true,
     bestSellers: true,
     imageAssets: 'assets/images/latte3.jpg',
     description:
@@ -165,7 +165,7 @@ List<Coffee> coffees = [
     intensity: 3,
     beverageType: 'Latte',
     price: 6.50,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/latte4.jpg',
     description:
@@ -178,7 +178,7 @@ List<Coffee> coffees = [
     intensity: 4,
     beverageType: 'Mocha',
     price: 4.50,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/mocha1.jpg',
     description:
@@ -191,7 +191,7 @@ List<Coffee> coffees = [
     intensity: 3,
     beverageType: 'Mocha',
     price: 4.75,
-    isAtive: true,
+    isActive: true,
     bestSellers: true,
     imageAssets: 'assets/images/mocha2.jpg',
     description:
@@ -204,7 +204,7 @@ List<Coffee> coffees = [
     intensity: 4,
     beverageType: 'Cappuccino',
     price: 6,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/cappuccino2.jpg',
     description:
@@ -217,7 +217,7 @@ List<Coffee> coffees = [
     intensity: 3,
     beverageType: 'Mocha',
     price: 5,
-    isAtive: true,
+    isActive: true,
     bestSellers: false,
     imageAssets: 'assets/images/mocha4.jpg',
     description:

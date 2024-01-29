@@ -287,7 +287,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                             intensity: coffee.intensity,
                             beverageType: coffee.beverageType,
                             price: coffee.price * _valueSize,
-                            isAtive: coffee.isAtive,
+                            isActive: coffee.isActive,
                             bestSellers: coffee.bestSellers,
                             imageAssets: coffee.imageAssets,
                             description: coffee.description,

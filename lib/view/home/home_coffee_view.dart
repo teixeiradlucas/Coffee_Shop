@@ -13,7 +13,7 @@ class HomeCoffeeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activeCoffees = coffees.where((coffee) => coffee.isAtive).toList();
+    final activeCoffees = coffees.where((coffee) => coffee.isActive).toList();
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
