@@ -4,6 +4,7 @@ import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
+import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -32,14 +33,19 @@ class CartFinishView extends StatelessWidget {
               ),
             ),
             gap,
-            Center(child: TextCustom.h1(StringsGeneric.orderSucessfull)),
+            Center(
+              child: TextCustom.h1(StringsGeneric.orderSucessfull),
+            ),
             gapXL,
             ElevatedButton(
               onPressed: () {
                 context.read<ProductBloc>().add(CleanListProductEvent());
                 GoRouter.of(context).go(RoutesGeneric.homeRoute);
               },
-              child: TextCustom.h2(StringsGeneric.newOrder),
+              child: TextCustom.h2(
+                StringsGeneric.newOrder,
+                color: AppColors.whiteColor,
+              ),
             ),
           ],
         ),
