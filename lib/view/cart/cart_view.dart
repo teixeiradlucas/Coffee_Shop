@@ -2,12 +2,14 @@ import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
 import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/view/components/coffee_cart.dart';
 import 'package:coffee_shop/view/components/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 class CartView extends StatefulWidget {
   const CartView({super.key});
@@ -104,7 +106,22 @@ ClipRRect _payment(Size size) {
                   height: 50,
                   width: size.width * 0.8,
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: (state is ProductSuccessState &&
+                            state.products.isNotEmpty)
+                        ? () async => GoRouter.of(context)
+                            .push(RoutesGeneric.cartFinishRoute)
+                        : () {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Center(
+                                  child: TextCustom.h2(
+                                    StringsGeneric.addToCart,
+                                    color: AppColors.whiteColor,
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                     style: ButtonStyle(
                       backgroundColor: MaterialStateProperty.all<Color>(
                         AppColors.brownCoffeeColor,
