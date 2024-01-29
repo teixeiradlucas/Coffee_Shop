@@ -13,6 +13,11 @@ class ProductRepository {
     return _products;
   }
 
+  List<Product> cleanListProduct() {
+    _products.clear();
+    return _products;
+  }
+
   List<Product> getProducts() {
     return _products;
   }
