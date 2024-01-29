@@ -3,6 +3,7 @@ import 'package:coffee_shop/bloc/product_events.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
 import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
@@ -93,7 +94,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      await GoRouter.of(context).push('/cart');
+                      await GoRouter.of(context).push(RoutesGeneric.cartRoute);
                     },
                     //TODO:ADICIONAR NUMERO DE ITENS NO CARRINHO
                     child: Stack(
@@ -328,7 +329,7 @@ class _CoffeeViewState extends State<CoffeeView> {
             ? AppColors.whiteColor
             : AppColors.brownCoffeeColor,
       ),
-      child: TextCustom.body(
+      child: TextCustom.body4(
         size,
         color: _selectedSize == size
             ? AppColors.brownCoffeeColor

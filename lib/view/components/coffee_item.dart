@@ -1,5 +1,6 @@
 import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
 import 'package:coffee_shop/view/components/image_coffee.dart';
@@ -21,8 +22,8 @@ class CoffeeItem extends StatelessWidget {
     final discountMessage = textDiscount(itemCoffee);
 
     return GestureDetector(
-      onTap: () async =>
-          GoRouter.of(context).push('/coffee_view/${itemCoffee.id}'),
+      onTap: () async => GoRouter.of(context)
+          .push('${RoutesGeneric.coffeeViewRoute}${itemCoffee.id}'),
       child: Padding(
         padding: const EdgeInsets.all(kPaddingM),
         child: ClipRRect(

@@ -26,7 +26,7 @@ class CategoryCoffee extends StatelessWidget {
                 Tab(child: TextCustom.body2(StringsGeneric.espresso)),
                 Tab(child: TextCustom.body2(StringsGeneric.cappuccino)),
                 Tab(child: TextCustom.body2(StringsGeneric.latte)),
-                Tab(child: TextCustom.body2(StringsGeneric.medium)),
+                Tab(child: TextCustom.body2(StringsGeneric.mocha)),
               ],
             ),
             Expanded(
@@ -35,7 +35,7 @@ class CategoryCoffee extends StatelessWidget {
                   _listCoffee(StringsGeneric.espresso),
                   _listCoffee(StringsGeneric.cappuccino),
                   _listCoffee(StringsGeneric.latte),
-                  _listCoffee(StringsGeneric.medium),
+                  _listCoffee(StringsGeneric.mocha),
                 ],
               ),
             ),
