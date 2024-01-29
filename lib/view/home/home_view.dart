@@ -4,6 +4,7 @@ import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/view/cart/cart_view.dart';
 import 'package:coffee_shop/view/favorites/favorites_view.dart';
 import 'package:coffee_shop/view/home/home_coffee_view.dart';
+import 'package:coffee_shop/view/offer/offer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -35,6 +36,7 @@ class _HomeViewState extends State<HomeView> {
           HomeCoffeeView(),
           FavoritesView(),
           CartView(),
+          OfferView(),
         ],
       ),
     );
