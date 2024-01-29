@@ -97,7 +97,7 @@ Column _bestSellers(
   return Column(
     children: [
       gap,
-      TextCustom.body3(StringsGeneric.bestSellers),
+      TextCustom.body4(StringsGeneric.bestSellers),
       gapM,
       SizedBox(
         height: size.height * 0.27,

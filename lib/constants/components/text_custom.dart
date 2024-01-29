@@ -3,7 +3,7 @@ import 'package:coffee_shop/constants/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
 class TextCustom {
-  static Widget h1(
+  static Text h1(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -21,7 +21,7 @@ class TextCustom {
     );
   }
 
-  static Widget h2(
+  static Text h2(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -39,7 +39,7 @@ class TextCustom {
     );
   }
 
-  static Widget h3(String text) {
+  static Text h3(String text) {
     return Text(
       text,
       style: const TextStyle(
@@ -54,7 +54,7 @@ class TextCustom {
     );
   }
 
-  static Widget h4(
+  static Text h4(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -72,7 +72,7 @@ class TextCustom {
     );
   }
 
-  static Widget body(
+  static Text body(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -89,7 +89,7 @@ class TextCustom {
     );
   }
 
-  static Widget body2(
+  static Text body2(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -107,7 +107,7 @@ class TextCustom {
     );
   }
 
-  static Widget body3(
+  static Text body3(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -124,7 +124,7 @@ class TextCustom {
     );
   }
 
-  static Widget body4(
+  static Text body4(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -141,7 +141,7 @@ class TextCustom {
     );
   }
 
-  static Widget descrition(String text) {
+  static Text descrition(String text) {
     return Text(
       text,
       style: const TextStyle(
@@ -155,7 +155,7 @@ class TextCustom {
     );
   }
 
-  static Widget sale(String text) {
+  static Text sale(String text) {
     return Text(
       text,
       style: const TextStyle(
@@ -169,7 +169,7 @@ class TextCustom {
     );
   }
 
-  static Widget discount(
+  static Text discount(
     String text, {
     Color color = AppColors.grayColor,
   }) {
