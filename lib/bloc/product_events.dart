@@ -14,6 +14,10 @@ class RemoveProductEvent extends ProductEvent {
   Product product;
 }
 
+class CleanListProductEvent extends ProductEvent {
+  CleanListProductEvent();
+}
+
 class IncrementProductQuantityEvent extends ProductEvent {
   IncrementProductQuantityEvent({required this.product});
 

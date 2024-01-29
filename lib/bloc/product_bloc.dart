@@ -33,6 +33,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       ),
     );
 
+    on<CleanListProductEvent>(
+      (event, emit) => emit(
+        ProductSuccessState(
+          products: _productRepo.cleanListProduct(),
+        ),
+      ),
+    );
+
     on<IncrementProductQuantityEvent>(
       (event, emit) {
         for (final product in _productRepo.getProducts()) {
