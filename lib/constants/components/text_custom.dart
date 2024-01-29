@@ -115,6 +115,23 @@ class TextCustom {
       text,
       style: TextStyle(
         fontFamily: AppFonts.inter,
+        fontSize: 14,
+        fontWeight: FontWeight.w700,
+        height: 1,
+        color: color,
+      ),
+      textAlign: TextAlign.start,
+    );
+  }
+
+  static Widget body4(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontFamily: AppFonts.inter,
         fontSize: 20,
         fontWeight: FontWeight.w700,
         height: 1,
