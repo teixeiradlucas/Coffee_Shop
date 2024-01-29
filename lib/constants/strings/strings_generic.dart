@@ -20,4 +20,7 @@ class StringsGeneric {
   static const mocha = 'Mocha';
   static const phrase = 'Espresso irresistível, momentos inesquecíveis.';
   static const offdiscount = 'ATÉ 20% OFF';
+  static const orderSucessfull = 'Pedido feito com sucesso';
+  static const newOrder = 'Fazer novo pedido';
+  static const addToCart = 'Adicione itens ao carrinho';
 }
