@@ -296,11 +296,6 @@ class _CoffeeViewState extends State<CoffeeView> {
                           size: _selectedSize,
                         ),
                       ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          AppColors.brownCoffeeColor,
-                        ),
-                      ),
                       child: TextCustom.h4(
                         StringsGeneric.addCart,
                         color: AppColors.whiteColor,

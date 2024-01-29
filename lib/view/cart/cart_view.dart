@@ -122,11 +122,6 @@ ClipRRect _payment(Size size) {
                               ),
                             );
                           },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        AppColors.brownCoffeeColor,
-                      ),
-                    ),
                     child: TextCustom.body(
                       StringsGeneric.finalizeOrder,
                       color: AppColors.whiteColor,
