@@ -59,8 +59,12 @@ class _CartViewState extends State<CartView> {
               ),
             );
           }
-          return Center(
-            child: TextCustom.h2(StringsGeneric.emptyCart),
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('assets/images/cartEmpty.png'),
+              TextCustom.h2(StringsGeneric.emptyCart),
+            ],
           );
         },
       ),

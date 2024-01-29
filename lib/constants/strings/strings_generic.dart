@@ -9,7 +9,8 @@ class StringsGeneric {
   static const medium = 'Médio';
   static const big = 'Grande';
   static const addCart = 'Adicionar ao carrinho';
-  static const emptyCart = 'Carrinho está vazio';
+  static const emptyCart = 'Seu carrinho está vazio';
+  static const emptyFavorites = 'Lista de favoritos está vazio';
   static const price = 'PREÇO';
   static const description = 'Descrição';
   static const subTotal = 'Subtotal';

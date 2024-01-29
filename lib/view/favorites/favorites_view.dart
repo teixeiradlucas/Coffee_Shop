@@ -12,7 +12,13 @@ class FavoritesView extends StatelessWidget {
         centerTitle: true,
         title: TextCustom.h1(StringsGeneric.favoritesTitle),
       ),
-      body: const SizedBox(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset('assets/images/favoritesEmpty.png'),
+          TextCustom.h2(StringsGeneric.emptyFavorites),
+        ],
+      ),
     );
   }
 }
