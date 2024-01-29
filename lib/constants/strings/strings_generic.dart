@@ -11,7 +11,7 @@ class StringsGeneric {
   static const addCart = 'Adicionar ao carrinho';
   static const emptyCart = 'Carrinho está vazio';
   static const price = 'PREÇO';
-  static const descrition = 'Descrição';
+  static const description = 'Descrição';
   static const subTotal = 'Subtotal';
   static const discount = 'Desconto';
   static const valueFinal = 'Valor Final';

@@ -141,7 +141,7 @@ class TextCustom {
     );
   }
 
-  static Text descrition(String text) {
+  static Text description(String text) {
     return Text(
       text,
       style: const TextStyle(

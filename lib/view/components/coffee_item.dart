@@ -72,7 +72,7 @@ class CoffeeItem extends StatelessWidget {
                   gapM,
                   TextCustom.body(itemCoffee.name),
                   gapS,
-                  TextCustom.descrition(itemCoffee.beverageType),
+                  TextCustom.description(itemCoffee.beverageType),
                   gapM,
                   Row(
                     children: [

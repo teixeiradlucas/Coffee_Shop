@@ -48,7 +48,7 @@ class CoffeeItemType extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         TextCustom.h4(itemCoffee.name),
-                        TextCustom.descrition(itemCoffee.beverageType),
+                        TextCustom.description(itemCoffee.beverageType),
                         Row(
                           children: [
                             TextCustom.h2(realPrice),

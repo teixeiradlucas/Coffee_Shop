@@ -43,7 +43,7 @@ class _CoffeeViewState extends State<CoffeeView> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _coffeeContent(size, itemCoffees, context),
-          _descrition(itemCoffees),
+          _description(itemCoffees),
           _buy(itemCoffees, size),
         ],
       ),
@@ -214,7 +214,7 @@ class _CoffeeViewState extends State<CoffeeView> {
     );
   }
 
-  Padding _descrition(Coffee itemCoffees) {
+  Padding _description(Coffee itemCoffees) {
     return Padding(
       padding: const EdgeInsets.only(
         left: kPaddingXL,
@@ -222,7 +222,7 @@ class _CoffeeViewState extends State<CoffeeView> {
       ),
       child: Column(
         children: [
-          TextCustom.h1(StringsGeneric.descrition),
+          TextCustom.h1(StringsGeneric.description),
           gap,
           TextCustom.body(itemCoffees.description),
         ],

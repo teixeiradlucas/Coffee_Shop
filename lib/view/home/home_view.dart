@@ -29,6 +29,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       bottomNavigationBar: _bottomNavigation(context, pageController),
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         children: const [
           HomeCoffeeView(),
