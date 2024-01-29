@@ -6,11 +6,23 @@ import 'package:coffee_shop/repositories/product_repository.dart';
 class ProductBloc extends Bloc<ProductEvent, ProductState> {
   ProductBloc() : super(ProductInitialState()) {
     on<AddProductEvent>(
-      (event, emit) => emit(
-        ProductSuccessState(
-          products: _productRepo.addProduct(event.product),
-        ),
-      ),
+      (event, emit) {
+        var productExists = false;
+        for (final product in _productRepo.getProducts()) {
+          if (product.coffee.id == event.product.coffee.id &&
+              product.size == event.product.size) {
+            product.quantity += event.product.quantity;
+            productExists = true;
+            break;
+          }
+        }
+
+        if (!productExists) {
+          _productRepo.addProduct(event.product);
+        }
+
+        emit(ProductSuccessState(products: _productRepo.getProducts()));
+      },
     );
 
     on<RemoveProductEvent>(
@@ -20,6 +32,47 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
         ),
       ),
     );
+
+    on<CleanListProductEvent>(
+      (event, emit) => emit(
+        ProductSuccessState(
+          products: _productRepo.cleanListProduct(),
+        ),
+      ),
+    );
+
+    on<IncrementProductQuantityEvent>(
+      (event, emit) {
+        for (final product in _productRepo.getProducts()) {
+          if (product.coffee.id == event.product.coffee.id &&
+              product.size == event.product.size) {
+            product.quantity += 1;
+            break;
+          }
+        }
+        emit(ProductSuccessState(products: _productRepo.getProducts()));
+      },
+    );
+
+    on<DecrementProductQuantityEvent>(
+      (event, emit) {
+        for (final product in _productRepo.getProducts()) {
+          if (product.coffee.id == event.product.coffee.id &&
+              product.size == event.product.size) {
+            if (product.quantity > 0) {
+              product.quantity -= 1;
+
+              if (product.quantity <= 0) {
+                add(RemoveProductEvent(product: product));
+              }
+            }
+            break;
+          }
+        }
+        emit(ProductSuccessState(products: _productRepo.getProducts()));
+      },
+    );
   }
+
   final _productRepo = ProductRepository();
 }

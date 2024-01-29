@@ -1,8 +1,9 @@
 import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_events.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
@@ -10,7 +11,6 @@ import 'package:coffee_shop/model/product.dart';
 import 'package:coffee_shop/repositories/coffee_repository.dart';
 import 'package:coffee_shop/view/components/border_container.dart';
 import 'package:coffee_shop/view/components/price.dart';
-import 'package:coffee_shop/view/components/size_coffee.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -29,6 +29,8 @@ class CoffeeView extends StatefulWidget {
 }
 
 class _CoffeeViewState extends State<CoffeeView> {
+  String _selectedSize = StringsGeneric.medium;
+  double _valueSize = 1;
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -41,7 +43,7 @@ class _CoffeeViewState extends State<CoffeeView> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _coffeeContent(size, itemCoffees, context),
-          _descrition(itemCoffees),
+          _description(itemCoffees),
           _buy(itemCoffees, size),
         ],
       ),
@@ -62,8 +64,8 @@ class _CoffeeViewState extends State<CoffeeView> {
             top: 0,
             child: ClipRRect(
               borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(AppDimens.kPaddingXL),
-                bottomRight: Radius.circular(AppDimens.kPaddingXL),
+                bottomLeft: Radius.circular(kPaddingXL),
+                bottomRight: Radius.circular(kPaddingXL),
               ),
               child: SizedBox(
                 height: size.height * 0.60,
@@ -76,7 +78,7 @@ class _CoffeeViewState extends State<CoffeeView> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(AppDimens.kPadding),
+            padding: const EdgeInsets.all(kPadding),
             child: SafeArea(
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -92,8 +94,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                   ),
                   GestureDetector(
                     onTap: () async {
-                      // Navigator.pop(context);
-                      await GoRouter.of(context).push('/cart');
+                      await GoRouter.of(context).push(RoutesGeneric.cartRoute);
                     },
                     //TODO:ADICIONAR NUMERO DE ITENS NO CARRINHO
                     child: Stack(
@@ -112,11 +113,10 @@ class _CoffeeViewState extends State<CoffeeView> {
                                 return Container();
                               } else if (state is ProductSuccessState) {
                                 return SizedBox(
-                                  //color: Colors.white,
                                   height: 30,
                                   width: 30,
                                   child: BorderContainer(
-                                    child: CustomText.body(
+                                    child: TextCustom.body(
                                       color: AppColors.whiteColor,
                                       state.products.length.toString(),
                                     ),
@@ -141,20 +141,20 @@ class _CoffeeViewState extends State<CoffeeView> {
             left: 10,
             child: ClipRRect(
               borderRadius: BorderRadius.circular(
-                AppDimens.kPaddingXL,
+                kPaddingXL,
               ),
               child: Container(
-                height: 160,
+                height: 180,
                 color: AppColors.blackColor.withOpacity(0.5),
                 child: Padding(
-                  padding: const EdgeInsets.all(AppDimens.kDefaultPadding),
+                  padding: const EdgeInsets.all(kDefaultPadding),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Row(
                         children: [
-                          Expanded(child: CustomText.h3(itemCoffees.name)),
+                          Expanded(child: TextCustom.h3(itemCoffees.name)),
                           IconButton(
                             onPressed: () {},
                             //TODO:IMPLEMENTAR FAVORITOS E ANIMAÇÃO
@@ -166,7 +166,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                           ),
                         ],
                       ),
-                      CustomText.h2(
+                      TextCustom.h2(
                         itemCoffees.beverageType,
                         color: AppColors.grayColor,
                       ),
@@ -178,7 +178,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                             size: 30,
                           ),
                           Expanded(
-                            child: CustomText.h3(
+                            child: TextCustom.h3(
                               itemCoffees.rating.toString(),
                             ),
                           ),
@@ -194,7 +194,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                           BorderContainer(
                             size: 40,
                             color: AppColors.whiteColor,
-                            child: CustomText.h1(
+                            child: TextCustom.h1(
                               intensity.toString(),
                               color: intensity >= 7
                                   ? AppColors.redColor
@@ -214,17 +214,17 @@ class _CoffeeViewState extends State<CoffeeView> {
     );
   }
 
-  Padding _descrition(Coffee itemCoffees) {
+  Padding _description(Coffee itemCoffees) {
     return Padding(
       padding: const EdgeInsets.only(
-        left: AppDimens.kPaddingXL,
-        right: AppDimens.kPaddingXL,
+        left: kPaddingXL,
+        right: kPaddingXL,
       ),
       child: Column(
         children: [
-          CustomText.h1(AppStringsGeneric.descrition),
+          TextCustom.h1(StringsGeneric.description),
           gap,
-          CustomText.body(itemCoffees.description),
+          TextCustom.body(itemCoffees.description),
         ],
       ),
     );
@@ -235,45 +235,44 @@ class _CoffeeViewState extends State<CoffeeView> {
       context.read<ProductBloc>().add(AddProductEvent(product: product));
     }
 
-    //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO
+    //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO.
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.all(AppDimens.kDefaultPadding),
+        Padding(
+          padding: const EdgeInsets.all(kDefaultPadding),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              SizeCoffee(
-                color: AppColors.beigeColor,
-                text: AppStringsGeneric.small,
-              ),
-              SizeCoffee(
-                text: AppStringsGeneric.medium,
-              ),
-              SizeCoffee(
-                text: AppStringsGeneric.big,
-              ),
+              _buildButton(StringsGeneric.small, 0.8),
+              _buildButton(StringsGeneric.medium, 1),
+              _buildButton(StringsGeneric.big, 1.2),
             ],
           ),
         ),
         ClipRRect(
           borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(AppDimens.kPaddingXL),
-            topRight: Radius.circular(AppDimens.kPaddingXL),
+            topLeft: Radius.circular(kPaddingXL),
+            topRight: Radius.circular(kPaddingXL),
           ),
           child: Container(
             height: size.height * 0.15,
             color: AppColors.whiteColor,
             child: Padding(
-              padding: const EdgeInsets.all(AppDimens.kPaddingM),
+              padding: const EdgeInsets.all(kPaddingM),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CustomText.h1(finalPrice(coffee)),
-                      CustomText.discount(formattedPrice(coffee.price)),
+                      TextCustom.h1(
+                        formattedPrice(
+                          finalDiscount(coffee) * _valueSize,
+                        ),
+                      ),
+                      TextCustom.discount(
+                        formattedPrice(coffee.price * _valueSize),
+                      ),
                     ],
                   ),
                   SizedBox(
@@ -282,17 +281,23 @@ class _CoffeeViewState extends State<CoffeeView> {
                     child: ElevatedButton(
                       onPressed: () => addToCart(
                         Product(
-                          coffee: coffee,
-                          size: 'P',
+                          coffee: Coffee(
+                            id: coffee.id,
+                            name: coffee.name,
+                            intensity: coffee.intensity,
+                            beverageType: coffee.beverageType,
+                            price: coffee.price * _valueSize,
+                            isActive: coffee.isActive,
+                            bestSellers: coffee.bestSellers,
+                            imageAssets: coffee.imageAssets,
+                            description: coffee.description,
+                            rating: coffee.rating,
+                          ),
+                          size: _selectedSize,
                         ),
                       ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          AppColors.brownCoffeeColor,
-                        ),
-                      ),
-                      child: CustomText.h4(
-                        AppStringsGeneric.addCart,
+                      child: TextCustom.h4(
+                        StringsGeneric.addCart,
                         color: AppColors.whiteColor,
                       ),
                     ),
@@ -303,6 +308,28 @@ class _CoffeeViewState extends State<CoffeeView> {
           ),
         ),
       ],
+    );
+  }
+
+  ElevatedButton _buildButton(String size, double valueSize) {
+    return ElevatedButton(
+      onPressed: () {
+        setState(() {
+          _selectedSize = size;
+          _valueSize = valueSize;
+        });
+      },
+      style: ElevatedButton.styleFrom(
+        backgroundColor: _selectedSize == size
+            ? AppColors.whiteColor
+            : AppColors.brownCoffeeColor,
+      ),
+      child: TextCustom.body4(
+        size,
+        color: _selectedSize == size
+            ? AppColors.brownCoffeeColor
+            : AppColors.whiteColor,
+      ),
     );
   }
 }

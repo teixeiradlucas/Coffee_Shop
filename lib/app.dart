@@ -9,7 +9,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: AppStringsGeneric.appName,
+      title: StringsGeneric.appName,
       debugShowCheckedModeBanner: false,
       theme: AppTheme.lightTheme,
       routerDelegate: routes.routerDelegate,

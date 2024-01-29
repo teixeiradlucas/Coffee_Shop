@@ -1,4 +1,4 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:flutter/material.dart';
 
@@ -17,10 +17,10 @@ class BorderContainer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(AppDimens.kPaddingXS),
+      padding: const EdgeInsets.all(kPaddingXS),
       child: ClipRRect(
         borderRadius: BorderRadius.circular(
-          AppDimens.kDefaultPadding,
+          kDefaultPadding,
         ),
         child: Container(
           height: size,

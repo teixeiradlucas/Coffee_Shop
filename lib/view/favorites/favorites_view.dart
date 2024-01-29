@@ -1,3 +1,4 @@
+import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:flutter/material.dart';
 
@@ -7,8 +8,17 @@ class FavoritesView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text(AppStringsGeneric.favorites)),
-      body: const SizedBox(),
+      appBar: AppBar(
+        centerTitle: true,
+        title: TextCustom.h1(StringsGeneric.favoritesTitle),
+      ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset('assets/images/favoritesEmpty.png'),
+          TextCustom.h2(StringsGeneric.emptyFavorites),
+        ],
+      ),
     );
   }
 }

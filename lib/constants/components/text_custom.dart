@@ -2,8 +2,8 @@ import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/constants/themes/app_fonts.dart';
 import 'package:flutter/material.dart';
 
-class CustomText {
-  static Widget h1(
+class TextCustom {
+  static Text h1(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -21,7 +21,7 @@ class CustomText {
     );
   }
 
-  static Widget h2(
+  static Text h2(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -39,7 +39,7 @@ class CustomText {
     );
   }
 
-  static Widget h3(String text) {
+  static Text h3(String text) {
     return Text(
       text,
       style: const TextStyle(
@@ -54,7 +54,7 @@ class CustomText {
     );
   }
 
-  static Widget h4(
+  static Text h4(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -72,7 +72,7 @@ class CustomText {
     );
   }
 
-  static Widget body(
+  static Text body(
     String text, {
     Color color = AppColors.blackColor,
   }) {
@@ -89,36 +89,59 @@ class CustomText {
     );
   }
 
-  static Widget body2(String text) {
+  static Text body2(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: AppFonts.inter,
         fontSize: 10,
         fontWeight: FontWeight.w700,
         height: 1,
-        color: AppColors.blackColor,
+        color: color,
       ),
       textAlign: TextAlign.start,
       maxLines: 1,
     );
   }
 
-  static Widget body3(String text) {
+  static Text body3(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontFamily: AppFonts.inter,
-        fontSize: 20,
+        fontSize: 14,
         fontWeight: FontWeight.w700,
         height: 1,
-        color: AppColors.blackColor,
+        color: color,
       ),
       textAlign: TextAlign.start,
     );
   }
 
-  static Widget descrition(String text) {
+  static Text body4(
+    String text, {
+    Color color = AppColors.blackColor,
+  }) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontFamily: AppFonts.inter,
+        fontSize: 18,
+        fontWeight: FontWeight.w700,
+        height: 1,
+        color: color,
+      ),
+      textAlign: TextAlign.start,
+    );
+  }
+
+  static Text description(String text) {
     return Text(
       text,
       style: const TextStyle(
@@ -132,7 +155,7 @@ class CustomText {
     );
   }
 
-  static Widget sale(String text) {
+  static Text sale(String text) {
     return Text(
       text,
       style: const TextStyle(
@@ -146,7 +169,7 @@ class CustomText {
     );
   }
 
-  static Widget discount(
+  static Text discount(
     String text, {
     Color color = AppColors.grayColor,
   }) {

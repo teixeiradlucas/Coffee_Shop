@@ -5,7 +5,7 @@ class Coffee {
     required this.intensity,
     required this.beverageType,
     required this.price,
-    required this.isAtive,
+    required this.isActive,
     required this.bestSellers,
     required this.imageAssets,
     required this.description,
@@ -16,7 +16,7 @@ class Coffee {
   final int intensity;
   final String beverageType;
   final double price;
-  final bool isAtive;
+  final bool isActive;
   final bool bestSellers;
   final String imageAssets;
   final String description;

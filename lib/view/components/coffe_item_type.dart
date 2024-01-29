@@ -1,5 +1,6 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
 import 'package:coffee_shop/view/components/image_coffee.dart';
@@ -21,17 +22,17 @@ class CoffeeItemType extends StatelessWidget {
     final discountMessage = textDiscount(itemCoffee);
 
     return GestureDetector(
-      onTap: () async =>
-          GoRouter.of(context).push('/coffee_view/${itemCoffee.id}'),
+      onTap: () async => GoRouter.of(context)
+          .push('${RoutesGeneric.coffeeViewRoute}${itemCoffee.id}'),
       child: Padding(
-        padding: const EdgeInsets.all(AppDimens.kPaddingM),
+        padding: const EdgeInsets.all(kPaddingM),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+          borderRadius: BorderRadius.circular(kDefaultPadding),
           child: Container(
             height: 150,
             color: AppColors.whiteColor,
             child: Padding(
-              padding: const EdgeInsets.all(AppDimens.kPadding),
+              padding: const EdgeInsets.all(kPadding),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -41,20 +42,20 @@ class CoffeeItemType extends StatelessWidget {
                     width: 130,
                   ),
                   Padding(
-                    padding: const EdgeInsets.all(AppDimens.kPadding),
+                    padding: const EdgeInsets.all(kPadding),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        CustomText.h4(itemCoffee.name),
-                        CustomText.descrition(itemCoffee.beverageType),
+                        TextCustom.h4(itemCoffee.name),
+                        TextCustom.description(itemCoffee.beverageType),
                         Row(
                           children: [
-                            CustomText.h2(realPrice),
+                            TextCustom.h2(realPrice),
                             gapM,
-                            CustomText.sale(discountMessage),
+                            TextCustom.sale(discountMessage),
                             gapM,
-                            CustomText.discount(
+                            TextCustom.discount(
                               valueDiscount(itemCoffee),
                             ),
                           ],
@@ -66,7 +67,7 @@ class CoffeeItemType extends StatelessWidget {
                               color: AppColors.yellowColor,
                               size: 30,
                             ),
-                            CustomText.h4(
+                            TextCustom.h4(
                               itemCoffee.rating.toString(),
                             ),
                           ],

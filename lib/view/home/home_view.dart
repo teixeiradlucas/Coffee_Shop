@@ -1,8 +1,10 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/view/cart/cart_view.dart';
 import 'package:coffee_shop/view/favorites/favorites_view.dart';
 import 'package:coffee_shop/view/home/home_coffee_view.dart';
+import 'package:coffee_shop/view/offer/offer_view.dart';
 import 'package:flutter/material.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
 
@@ -28,11 +30,13 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       bottomNavigationBar: _bottomNavigation(context, pageController),
       body: PageView(
+        physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         children: const [
           HomeCoffeeView(),
           FavoritesView(),
           CartView(),
+          OfferView(),
         ],
       ),
     );
@@ -41,15 +45,15 @@ class _HomeViewState extends State<HomeView> {
 
 Padding _bottomNavigation(BuildContext context, PageController pageController) {
   return Padding(
-    padding: const EdgeInsets.all(AppDimens.kPaddingS),
+    padding: const EdgeInsets.all(kPaddingS),
     child: ClipRRect(
       borderRadius: const BorderRadius.all(
-        Radius.circular(AppDimens.kPaddingXL),
+        Radius.circular(kPaddingXL),
       ),
       child: GNav(
         backgroundColor: AppColors.whiteColor,
         tabBackgroundColor: AppColors.brownCoffeeColor,
-        padding: const EdgeInsets.all(AppDimens.kPadding * 2),
+        padding: const EdgeInsets.all(kPadding * 2),
         onTabChange: (index) async {
           await pageController.animateToPage(
             index,
@@ -61,26 +65,25 @@ Padding _bottomNavigation(BuildContext context, PageController pageController) {
         tabs: const [
           GButton(
             icon: Icons.home,
-            text: 'Home',
+            text: StringsGeneric.homeTitle,
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),
           GButton(
             icon: Icons.favorite,
-            text: 'Favoritos',
-            //onPressed: () async => GoRouter.of(context).push('/favorites'),
+            text: StringsGeneric.favoritesTitle,
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),
           GButton(
             icon: Icons.shopping_bag,
-            text: 'Carrinho',
+            text: StringsGeneric.cartTitle,
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),
           GButton(
             icon: Icons.discount,
-            text: 'Oferta',
+            text: StringsGeneric.offerTitle,
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),

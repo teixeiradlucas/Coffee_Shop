@@ -20,9 +20,16 @@ class AppTheme {
   static ThemeData get lightTheme => ThemeData(
         useMaterial3: true,
         brightness: Brightness.light,
-        //primarySwatch: Colors.brown,
+
+        elevatedButtonTheme: ElevatedButtonThemeData(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all<Color>(
+              AppColors.brownCoffeeColor,
+            ),
+          ),
+        ),
         colorSchemeSeed: AppColors.brownCoffeeColor,
-        //primaryColor: AppColors.blackColor,
+
         scaffoldBackgroundColor: AppColors.backgroundColor,
         iconTheme: const IconThemeData(
           color: AppColors.blackColor,

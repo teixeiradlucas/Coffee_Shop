@@ -1,5 +1,6 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
 import 'package:coffee_shop/view/components/image_coffee.dart';
@@ -21,36 +22,63 @@ class CoffeeItem extends StatelessWidget {
     final discountMessage = textDiscount(itemCoffee);
 
     return GestureDetector(
-      onTap: () async =>
-          GoRouter.of(context).push('/coffee_view/${itemCoffee.id}'),
+      onTap: () async => GoRouter.of(context)
+          .push('${RoutesGeneric.coffeeViewRoute}${itemCoffee.id}'),
       child: Padding(
-        padding: const EdgeInsets.all(AppDimens.kPaddingM),
+        padding: const EdgeInsets.all(kPaddingM),
         child: ClipRRect(
-          borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+          borderRadius: BorderRadius.circular(kDefaultPadding),
           child: Container(
             height: 200,
             width: 130,
             color: AppColors.whiteColor,
             child: Padding(
-              padding: const EdgeInsets.all(AppDimens.kPadding),
+              padding: const EdgeInsets.all(kPadding),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ImageCoffee(
-                    itemCoffee: itemCoffee,
-                    height: 115,
-                    width: 130,
+                  Stack(
+                    children: [
+                      ImageCoffee(
+                        itemCoffee: itemCoffee,
+                        height: 115,
+                        width: 130,
+                      ),
+                      Positioned(
+                        right: 3,
+                        top: 3,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(kPaddingM),
+                          child: Container(
+                            width: 50,
+                            color: AppColors.whiteColor,
+                            child: Row(
+                              children: [
+                                const Icon(
+                                  Icons.star,
+                                  color: AppColors.yellowColor,
+                                  size: 20,
+                                ),
+                                TextCustom.h4(
+                                  itemCoffee.rating.toString(),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   gapM,
-                  CustomText.body(itemCoffee.name),
+                  TextCustom.body(itemCoffee.name),
                   gapS,
-                  CustomText.descrition(itemCoffee.beverageType),
+                  TextCustom.description(itemCoffee.beverageType),
                   gapM,
                   Row(
                     children: [
-                      CustomText.body(realPrice),
+                      TextCustom.body(realPrice),
                       gapM,
-                      CustomText.sale(discountMessage),
+                      TextCustom.sale(discountMessage),
                     ],
                   ),
                 ],

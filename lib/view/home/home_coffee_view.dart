@@ -1,5 +1,5 @@
-import 'package:coffee_shop/constants/components/app_dimension.dart';
-import 'package:coffee_shop/constants/components/custom_text.dart';
+import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/components/text_custom.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
@@ -13,21 +13,19 @@ class HomeCoffeeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final activeCoffees = coffees.where((coffee) => coffee.isAtive).toList();
+    final activeCoffees = coffees.where((coffee) => coffee.isActive).toList();
     return Scaffold(
       appBar: AppBar(
-        title: Center(child: CustomText.h1(AppStringsGeneric.appName)),
+        centerTitle: true,
+        title: TextCustom.h1(StringsGeneric.appName),
       ),
-      body: SingleChildScrollView(
-        physics: const NeverScrollableScrollPhysics(),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            _news(context),
-            _bestSellers(context, activeCoffees),
-            CategoryCoffee(activeCoffees: activeCoffees),
-          ],
-        ),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          _news(context),
+          _bestSellers(context, activeCoffees),
+          CategoryCoffee(activeCoffees: activeCoffees),
+        ],
       ),
     );
   }
@@ -37,7 +35,7 @@ class HomeCoffeeView extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: AppColors.brownCoffeeColor,
-        borderRadius: BorderRadius.circular(AppDimens.kDefaultPadding),
+        borderRadius: BorderRadius.circular(kDefaultPadding),
       ),
       height: size.height * 0.18,
       width: size.width - 20,
@@ -48,9 +46,9 @@ class HomeCoffeeView extends StatelessWidget {
             left: 20,
             child: SizedBox(
               height: 120,
-              width: size.width * 0.65,
-              child: CustomText.h2(
-                'Espresso irresistível, momentos inesquecíveis.',
+              width: size.width * 0.70,
+              child: TextCustom.body4(
+                StringsGeneric.phrase,
                 color: AppColors.whiteColor,
               ),
             ),
@@ -63,9 +61,13 @@ class HomeCoffeeView extends StatelessWidget {
               height: 35,
               decoration: BoxDecoration(
                 color: AppColors.whiteColor,
-                borderRadius: BorderRadius.circular(AppDimens.kPaddingM),
+                borderRadius: BorderRadius.circular(kPaddingM),
               ),
-              child: Center(child: CustomText.body3('ATÉ 20% OFF')),
+              child: Center(
+                child: TextCustom.body3(
+                  StringsGeneric.offdiscount,
+                ),
+              ),
             ),
           ),
           Positioned(
@@ -95,7 +97,7 @@ Column _bestSellers(
   return Column(
     children: [
       gap,
-      CustomText.body3(AppStringsGeneric.bestSellers),
+      TextCustom.body4(StringsGeneric.bestSellers),
       gapM,
       SizedBox(
         height: size.height * 0.27,
