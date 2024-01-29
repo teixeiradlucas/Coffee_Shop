@@ -144,7 +144,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                 kPaddingXL,
               ),
               child: Container(
-                height: 160,
+                height: 180,
                 color: AppColors.blackColor.withOpacity(0.5),
                 child: Padding(
                   padding: const EdgeInsets.all(kDefaultPadding),

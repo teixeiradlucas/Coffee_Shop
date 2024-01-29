@@ -25,7 +25,7 @@ class _CartViewState extends State<CartView> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: TextCustom.h1(StringsGeneric.titleCart),
+        title: TextCustom.h1(StringsGeneric.cartTitle),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,

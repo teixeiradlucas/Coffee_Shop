@@ -1,4 +1,5 @@
 import 'package:coffee_shop/constants/components/dimension_custom.dart';
+import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/view/cart/cart_view.dart';
 import 'package:coffee_shop/view/favorites/favorites_view.dart';
@@ -61,25 +62,25 @@ Padding _bottomNavigation(BuildContext context, PageController pageController) {
         tabs: const [
           GButton(
             icon: Icons.home,
-            text: 'Home',
+            text: StringsGeneric.homeTitle,
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),
           GButton(
             icon: Icons.favorite,
-            text: 'Favoritos',
+            text: StringsGeneric.favoritesTitle,
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),
           GButton(
             icon: Icons.shopping_bag,
-            text: 'Carrinho',
+            text: StringsGeneric.cartTitle,
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),
           GButton(
             icon: Icons.discount,
-            text: 'Oferta',
+            text: StringsGeneric.offerTitle,
             iconActiveColor: AppColors.whiteColor,
             textColor: AppColors.whiteColor,
           ),

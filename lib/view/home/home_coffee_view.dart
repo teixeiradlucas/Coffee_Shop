@@ -46,8 +46,8 @@ class HomeCoffeeView extends StatelessWidget {
             left: 20,
             child: SizedBox(
               height: 120,
-              width: size.width * 0.65,
-              child: TextCustom.h2(
+              width: size.width * 0.70,
+              child: TextCustom.body4(
                 StringsGeneric.phrase,
                 color: AppColors.whiteColor,
               ),

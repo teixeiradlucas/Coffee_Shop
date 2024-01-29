@@ -132,7 +132,7 @@ class TextCustom {
       text,
       style: TextStyle(
         fontFamily: AppFonts.inter,
-        fontSize: 20,
+        fontSize: 18,
         fontWeight: FontWeight.w700,
         height: 1,
         color: color,

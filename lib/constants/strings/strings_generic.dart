@@ -1,7 +1,9 @@
 class StringsGeneric {
   static const appName = 'Cafeteria Prime';
-  static const titleCart = 'CARRINHO';
-  static const favorites = 'Favoritos';
+  static const cartTitle = 'Carrinho';
+  static const homeTitle = 'Home';
+  static const favoritesTitle = 'Favoritos';
+  static const offerTitle = 'Oferta';
   static const bestSellers = 'Mais vendidos';
   static const small = 'Pequeno';
   static const medium = 'Médio';
@@ -23,4 +25,6 @@ class StringsGeneric {
   static const orderSucessfull = 'Pedido feito com sucesso';
   static const newOrder = 'Fazer novo pedido';
   static const addToCart = 'Adicione itens ao carrinho';
+  static const espressoDiscount = '20% OFF';
+  static const cappucinoDiscount = '12% OFF';
 }
