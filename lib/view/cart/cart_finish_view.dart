@@ -17,34 +17,47 @@ class CartFinishView extends StatelessWidget {
     return Scaffold(
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Container(
-              width: 80,
-              height: 80,
-              decoration: const BoxDecoration(
-                color: Colors.green,
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-                Icons.check,
-                color: Colors.white,
-                size: 50,
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 100,
+                    height: 100,
+                    decoration: const BoxDecoration(
+                      color: Colors.green,
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      Icons.check,
+                      color: Colors.white,
+                      size: 60,
+                    ),
+                  ),
+                  gap,
+                  TextCustom.h1(StringsGeneric.orderSucessfull),
+                ],
               ),
             ),
-            gap,
-            Center(
-              child: TextCustom.h1(StringsGeneric.orderSucessfull),
-            ),
-            gapXL,
-            ElevatedButton(
-              onPressed: () {
-                context.read<ProductBloc>().add(CleanListProductEvent());
-                GoRouter.of(context).go(RoutesGeneric.homeRoute);
-              },
-              child: TextCustom.h2(
-                StringsGeneric.newOrder,
-                color: AppColors.whiteColor,
+            Padding(
+              padding: const EdgeInsets.all(kPaddingXL),
+              child: ElevatedButton(
+                onPressed: () {
+                  context.read<ProductBloc>().add(CleanListProductEvent());
+                  GoRouter.of(context).go(RoutesGeneric.homeRoute);
+                },
+                style: ButtonStyle(
+                  backgroundColor:
+                      MaterialStateProperty.all<Color>(AppColors.whiteColor),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(kDefaultPadding),
+                  child: TextCustom.h2(
+                    StringsGeneric.newOrder,
+                  ),
+                ),
               ),
             ),
           ],
