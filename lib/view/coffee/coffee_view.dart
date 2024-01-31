@@ -263,9 +263,12 @@ class _CoffeeViewState extends State<CoffeeView> {
                           finalDiscount(coffee) * _valueSize,
                         ),
                       ),
-                      TextCustom.discount(
-                        formattedPrice(coffee.price * _valueSize),
-                      ),
+                      if (finalDiscount(coffee) != coffee.price)
+                        TextCustom.discount(
+                          formattedPrice(coffee.price * _valueSize),
+                        )
+                      else
+                        Container(),
                     ],
                   ),
                   SizedBox(
