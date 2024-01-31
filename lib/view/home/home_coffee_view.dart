@@ -1,5 +1,6 @@
 import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/image_generic.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
 import 'package:coffee_shop/model/coffee.dart';
@@ -78,7 +79,7 @@ class HomeCoffeeView extends StatelessWidget {
               width: size.width * 0.3,
               child: FittedBox(
                 fit: BoxFit.fitHeight,
-                child: Image.asset('assets/images/coffeenew.png'),
+                child: Image.asset(ImageGeneric.coffeeNews),
               ),
             ),
           ),
