@@ -13,7 +13,6 @@ import 'package:coffee_shop/repositories/coffee_repository.dart';
 import 'package:coffee_shop/view/components/border_container.dart';
 import 'package:coffee_shop/view/components/favorites_button.dart';
 import 'package:coffee_shop/view/components/price.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
