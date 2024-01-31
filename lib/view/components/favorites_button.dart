@@ -53,7 +53,7 @@ class _FavoritesButtonState extends State<FavoritesButton> {
             }
           },
           icon: Icon(
-            color: AppColors.redColor,
+            color: isFavorite ? AppColors.redColor : AppColors.whiteColor,
             size: 50,
             isFavorite ? Icons.favorite : Icons.favorite_border,
           ),
