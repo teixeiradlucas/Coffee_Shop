@@ -1,16 +1,15 @@
-# coffee_shop
+# Coffee Shop
 
 A new Flutter project.
 
-## Getting Started
+## Packages we are using:
 
-This project is a starting point for a Flutter application.
+- bloc : [LINK](https://pub.dev/packages/bloc)
+- flutter_bloc : [LINK](https://pub.dev/packages/flutter_bloc)
+- flutter_svg : [LINK](https://pub.dev/packages/flutter_svg)
+- go_router : [LINK](https://pub.dev/packages/go_router)
+- google_nav_bar : [LINK](https://pub.dev/packages/google_nav_bar)
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Photos
+ 
