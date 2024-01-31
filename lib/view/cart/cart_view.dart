@@ -2,6 +2,7 @@ import 'package:coffee_shop/bloc/product_bloc.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
 import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/image_generic.dart';
 import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
@@ -62,7 +63,7 @@ class _CartViewState extends State<CartView> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Image.asset('assets/images/cartEmpty.png'),
+              Image.asset(ImageGeneric.cartEmpty),
               TextCustom.h2(StringsGeneric.emptyCart),
             ],
           );
@@ -80,62 +81,51 @@ ClipRRect _payment(Size size) {
     ),
     child: BlocBuilder<ProductBloc, ProductState>(
       builder: (context, state) {
-        return Container(
-          height: 160,
-          color: AppColors.whiteColor,
-          child: Padding(
-            padding: const EdgeInsets.all(kDefaultPadding),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _valueRow(
-                  StringsGeneric.subTotal,
-                  formattedPrice(
-                    valueProduct(state.products),
-                  ),
-                ),
-                _valueRow(
-                  StringsGeneric.discount,
-                  formattedPrice(
-                    valueProductDiscont(state.products),
-                  ),
-                ),
-                _valueRow(
-                  StringsGeneric.valueFinal,
-                  formattedPrice(
-                    valueProductFinal(state.products),
-                  ),
-                ),
-                SizedBox(
-                  height: 50,
-                  width: size.width * 0.8,
-                  child: ElevatedButton(
-                    onPressed: (state is ProductSuccessState &&
-                            state.products.isNotEmpty)
-                        ? () async => GoRouter.of(context)
-                            .push(RoutesGeneric.cartFinishRoute)
-                        : () {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Center(
-                                  child: TextCustom.h2(
-                                    StringsGeneric.addToCart,
-                                    color: AppColors.whiteColor,
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                    child: TextCustom.body(
-                      StringsGeneric.finalizeOrder,
-                      color: AppColors.whiteColor,
+        if (state.products.isNotEmpty) {
+          return Container(
+            height: 160,
+            color: AppColors.whiteColor,
+            child: Padding(
+              padding: const EdgeInsets.all(kDefaultPadding),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  _valueRow(
+                    StringsGeneric.subTotal,
+                    formattedPrice(
+                      valueProduct(state.products),
                     ),
                   ),
-                ),
-              ],
+                  _valueRow(
+                    StringsGeneric.discount,
+                    formattedPrice(
+                      valueProductDiscont(state.products),
+                    ),
+                  ),
+                  _valueRow(
+                    StringsGeneric.valueFinal,
+                    formattedPrice(
+                      valueProductFinal(state.products),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 50,
+                    width: size.width * 0.8,
+                    child: ElevatedButton(
+                      onPressed: () async => GoRouter.of(context)
+                          .push(RoutesGeneric.cartFinishRoute),
+                      child: TextCustom.body(
+                        StringsGeneric.finalizeOrder,
+                        color: AppColors.whiteColor,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        );
+          );
+        }
+        return Container();
       },
     ),
   );

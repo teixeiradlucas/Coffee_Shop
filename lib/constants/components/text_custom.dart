@@ -17,7 +17,7 @@ class TextCustom {
         color: color,
       ),
       maxLines: 3,
-      textAlign: TextAlign.start,
+      textAlign: TextAlign.center,
     );
   }
 

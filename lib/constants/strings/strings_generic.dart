@@ -28,4 +28,7 @@ class StringsGeneric {
   static const addToCart = 'Adicione itens ao carrinho';
   static const espressoDiscount = '20% OFF';
   static const cappucinoDiscount = '12% OFF';
+  static const coffeeToCart = 'Café adicionado ao carrinho';
+  static const removeFavorites = 'Café removido dos favoritos';
+  static const addFavorites = 'Café adicionado aos favoritos';
 }

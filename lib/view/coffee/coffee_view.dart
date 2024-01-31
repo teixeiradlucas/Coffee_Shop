@@ -3,6 +3,7 @@ import 'package:coffee_shop/bloc/product_events.dart';
 import 'package:coffee_shop/bloc/product_state.dart';
 import 'package:coffee_shop/constants/components/dimension_custom.dart';
 import 'package:coffee_shop/constants/components/text_custom.dart';
+import 'package:coffee_shop/constants/strings/image_generic.dart';
 import 'package:coffee_shop/constants/strings/routes_generic.dart';
 import 'package:coffee_shop/constants/strings/strings_generic.dart';
 import 'package:coffee_shop/constants/themes/app_colors.dart';
@@ -10,6 +11,7 @@ import 'package:coffee_shop/model/coffee.dart';
 import 'package:coffee_shop/model/product.dart';
 import 'package:coffee_shop/repositories/coffee_repository.dart';
 import 'package:coffee_shop/view/components/border_container.dart';
+import 'package:coffee_shop/view/components/favorites_button.dart';
 import 'package:coffee_shop/view/components/price.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,6 +58,7 @@ class _CoffeeViewState extends State<CoffeeView> {
     BuildContext context,
   ) {
     final intensity = itemCoffees.intensity;
+
     return SizedBox(
       height: size.height * 0.60,
       child: Stack(
@@ -84,7 +87,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   GestureDetector(
-                    onTap: () => Navigator.pop(context),
+                    onTap: () => context.pop(context),
                     child: const BorderContainer(
                       child: Icon(
                         Icons.arrow_back,
@@ -96,7 +99,6 @@ class _CoffeeViewState extends State<CoffeeView> {
                     onTap: () async {
                       await GoRouter.of(context).push(RoutesGeneric.cartRoute);
                     },
-                    //TODO:ADICIONAR NUMERO DE ITENS NO CARRINHO
                     child: Stack(
                       children: [
                         const BorderContainer(
@@ -155,15 +157,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                       Row(
                         children: [
                           Expanded(child: TextCustom.h3(itemCoffees.name)),
-                          IconButton(
-                            onPressed: () {},
-                            //TODO:IMPLEMENTAR FAVORITOS E ANIMAÇÃO
-                            icon: const Icon(
-                              color: AppColors.redColor,
-                              size: 40,
-                              Icons.favorite,
-                            ),
-                          ),
+                          FavoritesButton(itemCoffees: itemCoffees),
                         ],
                       ),
                       TextCustom.h2(
@@ -186,7 +180,7 @@ class _CoffeeViewState extends State<CoffeeView> {
                             size: 40,
                             color: AppColors.whiteColor,
                             child: SvgPicture.asset(
-                              'assets/icons/GraoIcon.svg',
+                              ImageGeneric.graoIcon,
                               height: 30,
                               width: 30,
                             ),
@@ -235,7 +229,6 @@ class _CoffeeViewState extends State<CoffeeView> {
       context.read<ProductBloc>().add(AddProductEvent(product: product));
     }
 
-    //TODO:ADICIONAR CONTROLLER PARA SELECIONAR TAMANHO E MUDAR O PREÇO.
     return Column(
       children: [
         Padding(
@@ -279,23 +272,25 @@ class _CoffeeViewState extends State<CoffeeView> {
                     height: 80,
                     width: 220,
                     child: ElevatedButton(
-                      onPressed: () => addToCart(
-                        Product(
-                          coffee: Coffee(
-                            id: coffee.id,
-                            name: coffee.name,
-                            intensity: coffee.intensity,
-                            beverageType: coffee.beverageType,
-                            price: coffee.price * _valueSize,
-                            isActive: coffee.isActive,
-                            bestSellers: coffee.bestSellers,
-                            imageAssets: coffee.imageAssets,
-                            description: coffee.description,
-                            rating: coffee.rating,
+                      onPressed: () {
+                        addToCart(
+                          Product(
+                            coffee: Coffee(
+                              id: coffee.id,
+                              name: coffee.name,
+                              intensity: coffee.intensity,
+                              beverageType: coffee.beverageType,
+                              price: coffee.price * _valueSize,
+                              isActive: coffee.isActive,
+                              bestSellers: coffee.bestSellers,
+                              imageAssets: coffee.imageAssets,
+                              description: coffee.description,
+                              rating: coffee.rating,
+                            ),
+                            size: _selectedSize,
                           ),
-                          size: _selectedSize,
-                        ),
-                      ),
+                        );
+                      },
                       child: TextCustom.h4(
                         StringsGeneric.addCart,
                         color: AppColors.whiteColor,
