@@ -1,7 +1,4 @@
 # Coffee Shop
-
-A new Flutter project.
-
 ## Packages we are using:
 
 - bloc : [LINK](https://pub.dev/packages/bloc)
@@ -10,6 +7,10 @@ A new Flutter project.
 - go_router : [LINK](https://pub.dev/packages/go_router)
 - google_nav_bar : [LINK](https://pub.dev/packages/google_nav_bar)
 
+## Video
+[Video Youtube](https://www.youtube.com/watch?v=M6dAq3UneuE)
 
-## Photos
+## Photo
+
+![App UI](/cafeteria.png)
  
