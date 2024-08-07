@@ -7,7 +7,7 @@ class AppTheme {
         brightness: Brightness.light,
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all<Color>(
+            backgroundColor: WidgetStateProperty.all<Color>(
               AppColors.brownCoffeeColor,
             ),
           ),

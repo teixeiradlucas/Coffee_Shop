@@ -50,7 +50,7 @@ class CartFinishView extends StatelessWidget {
                 },
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(AppColors.whiteColor),
+                      WidgetStateProperty.all<Color>(AppColors.whiteColor),
                 ),
                 child: Padding(
                   padding: const EdgeInsets.all(kDefaultPadding),
