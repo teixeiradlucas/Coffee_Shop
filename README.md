@@ -8,6 +8,9 @@
 - google_nav_bar : [LINK](https://pub.dev/packages/google_nav_bar)
 
 ## Video
-[Video Youtube](https://www.youtube.com/watch?v=1-8GRXGui3I)
+[Video Youtube](https://youtu.be/M6dAq3UneuE?si=zahONcNcYY6FzRrI)
 
  
+## Photo
+
+![App UI](/cafeteria.png)
