@@ -13,6 +13,7 @@ import 'package:coffee_shop/repositories/coffee_repository.dart';
 import 'package:coffee_shop/view/components/border_container.dart';
 import 'package:coffee_shop/view/components/favorites_button.dart';
 import 'package:coffee_shop/view/components/price.dart';
+import 'package:coffee_shop/view/components/show_snack.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -147,7 +148,7 @@ class _CoffeeViewState extends State<CoffeeView> {
               ),
               child: Container(
                 height: 180,
-                color: AppColors.blackColor.withOpacity(0.5),
+                color: AppColors.blackColor.withValues(alpha: 0.5),
                 child: Padding(
                   padding: const EdgeInsets.all(kDefaultPadding),
                   child: Column(
@@ -227,6 +228,9 @@ class _CoffeeViewState extends State<CoffeeView> {
   Column _buy(Coffee coffee, Size size) {
     void addToCart(Product product) {
       context.read<ProductBloc>().add(AddProductEvent(product: product));
+      ScaffoldMessenger.of(context).showSnackBar(
+        showSnack(StringsGeneric.coffeeToCart),
+      );
     }
 
     return Column(
