@@ -25,7 +25,7 @@ class BorderContainer extends StatelessWidget {
         child: Container(
           height: size,
           width: size,
-          color: color.withOpacity(0.5),
+          color: color.withValues(alpha: 0.5),
           child: Center(child: child),
         ),
       ),
